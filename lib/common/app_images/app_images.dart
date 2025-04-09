@@ -1,0 +1,55 @@
+class AppImages {
+  //================ Icons ==================>
+  static const splashLogo = "assets/icons/logo.png";
+  static const authLogo = "assets/icons/logo light.png";
+  static const authBack = "assets/images/authBack.png";
+  static const arrowRight = "assets/icons/arrow right.png";
+  static const home = "assets/icons/home.png";
+  static const homeFilled = "assets/icons/home filled.png";
+  static const vendor = "assets/icons/vendor.png";
+  static const vendorFilled = "assets/icons/vendor filled.png";
+  static const favorite = "assets/icons/Favorite.png";
+  static const favoriteFilled = "assets/icons/Favorite filled.png";
+  static const profile = "assets/icons/profile.png";
+  static const profileFilled = "assets/icons/profile filled.png";
+  static const earnings = "assets/icons/earnings.png";
+  static const earningsFilled = "assets/icons/earnings filled.png";
+  static const products = "assets/icons/products.png";
+  static const productsFilled = "assets/icons/products filled.png";
+  static const orders = "assets/icons/orders.png";
+  static const ordersFilled = "assets/icons/orders filled.png";
+  static const search = "assets/icons/search.png";
+  static const back = "assets/icons/back.png";
+  static const facebook = "assets/icons/facebook.png";
+  static const google = "assets/icons/google.png";
+  static const apple = "assets/icons/apple.png";
+  static const bookmarkSmall = "assets/icons/bookmark-small.png";
+  static const close = "assets/icons/close.png";
+  static const threeDot = "assets/icons/three dot.png";
+  static const camera = "assets/icons/camera.png";
+  static const eyeClose = "assets/icons/eye close.png";
+  static const checkbox = "assets/icons/checkbox.png";
+
+  //================ Images ==================>
+  static const onboardingOne = "assets/images/onboarding 1.png";
+  static const onboardingTwo = "assets/images/onboarding 2.png";
+  static const onboardingThree = "assets/images/onboarding 3.png";
+  static const homePromo = "assets/images/home promo image.png";
+  static const productImage = 'assets/images/product Image.png';
+
+  static const onboardingBackTwo = "assets/images/onboarding background 2.png";
+  static const authHome = "assets/images/auth home back.png";
+  static const forgotImage = "assets/images/ForgotPassword.png";
+  static const signInImage = "assets/images/sign in.png";
+  static const newPassImage = "assets/images/new pass.png";
+  static const signUpImage = "assets/images/create account.png";
+  static const verifyCodeImage = "assets/images/verify code.png";
+  static const verifyEmailImage = "assets/images/verify email code.png";
+  static const enterPhoneNumber = "assets/images/enter phone number.png";
+
+  static const profileImage = 'https://images.unsplash.com/photo-1578320339911-5e7974b2720a?q=80&w=778&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  static const profileImageTwo = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D';
+  static const storeImageTwo = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlAHSjq7Gk3-FboSL_OMkC42bdCkxD12e4mw&s';
+  static const groupOfDogs = 'https://plus.unsplash.com/premium_photo-1668114375111-e90b5e975df6?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  static const imageNotAvailable = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNNLEL-qmmLeFR1nxJuepFOgPYfnwHR56vcw&s';
+}
