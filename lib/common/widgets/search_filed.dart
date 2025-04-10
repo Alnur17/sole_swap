@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sole_swap/common/app_images/app_images.dart';
 import 'custom_textfield.dart';
 
 
@@ -9,8 +10,9 @@ class SearchFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
+      preIcon: Image.asset(AppImages.search,scale: 4,),
       onChange: onChanged,
-      hintText: 'Search...',
+      hintText: 'Search your sneakers',
       borderRadius: 30,
     );
   }

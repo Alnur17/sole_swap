@@ -65,7 +65,7 @@ class CustomProductCard extends StatelessWidget {
                           shape: BoxShape.circle,
                         ),
                         child: Image.asset(
-                          AppImages.bookmarkSmall,
+                          AppImages.addBookmark,
                           scale: 4,
                         ),
                       ),

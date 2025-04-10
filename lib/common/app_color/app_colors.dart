@@ -5,9 +5,11 @@ class AppColors {
   static const splashBackColor = Color(0xFFF8F9FA);
   static const background = Color(0xFFF8F9FA);
   static const logoBgColor = Color(0xFFECF7FF);
+  static const promoBgColor = Color(0xFFE8E8E8);
   static const bottomNavbar = Color(0xffF9F9F9);
   static const textColorBlue = Color(0xff2C50ED);
-  static const gradientColor = [Color(0xff2E8DD6), Color(0xff4742B5)];
+  static const textColorOrange = Color(0xffD8B600);
+  static const gradientColor = [Color(0xffD8B600), Color(0xffDBBC17), Color(0xffB59900)];
 
   //fixed color
   static const transparent = Colors.transparent;

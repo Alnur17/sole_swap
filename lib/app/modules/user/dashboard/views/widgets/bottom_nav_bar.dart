@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sole_swap/common/app_images/app_images.dart';
+import '../../../../../../common/app_color/app_colors.dart';
 import '../../controllers/dashboard_controller.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -23,7 +24,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       child: Container(
         height: 75,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.white,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.4),

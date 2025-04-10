@@ -3,9 +3,16 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sole_swap/app/modules/user/home/views/search_view.dart';
+import 'package:sole_swap/app/modules/user/home/views/widgets/promo_banner.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
-import 'package:sole_swap/common/app_images/app_images.dart';
-import 'package:sole_swap/common/widgets/custom_button.dart';
+import 'package:sole_swap/common/helper/new_shoe_card.dart';
+import 'package:sole_swap/common/helper/recommended_shoe_card.dart';
+import 'package:sole_swap/common/helper/trending_shoe_card.dart';
+import 'package:sole_swap/common/size_box/custom_sizebox.dart';
+import 'package:sole_swap/common/widgets/custom_row_header.dart';
+import '../../../../../common/app_images/app_images.dart';
+import '../../../../../common/app_text_style/styles.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends StatefulWidget {
@@ -17,133 +24,260 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final controller = Get.put(HomeController());
-  //final PageController _pageController = PageController();
+
+  final List<Widget> promoBanners = [
+    PromoBanner(
+      title: "New Collection",
+      discountPercentage: "20%",
+      discountText: "Discount",
+      subText: "on your first rent",
+      buttonText: "Rent now",
+      imagePath: AppImages.promoImageOne,
+    ),
+    PromoBanner(
+      title: "Summer Sale",
+      discountPercentage: "30%",
+      discountText: "Off",
+      subText: "on selected items",
+      buttonText: "Rent now",
+      imagePath: AppImages.promoImageTwo,
+      onPressed: () {
+        print("Rent now pressed!");
+      },
+    ),
+    PromoBanner(
+      title: "Winter Deals",
+      discountPercentage: "15%",
+      discountText: "Savings",
+      subText: "on winter items",
+      buttonText: "Explore",
+      imagePath: AppImages.promoImageThree,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
+        backgroundColor: AppColors.mainColor,
+        scrolledUnderElevation: 0,
+        title: Row(
+          children: [
+            sw5,
+            CircleAvatar(
+              radius: 25,
+              backgroundImage: NetworkImage(AppImages.profileImage),
+            ),
+            sw8,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Hello 👋🏻',
+                  style: h6,
+                ),
+                Text(
+                  'Saiid Romea',
+                  style: h5.copyWith(fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+          ],
+        ),
+        actions: [
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: AppColors.grey),
+              ),
+              child: Image.asset(
+                AppImages.notification,
+                scale: 4,
+              ),
+            ),
+          ),
+          sw8,
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: AppColors.grey),
+              ),
+              child: Image.asset(
+                AppImages.shop,
+                scale: 4,
+              ),
+            ),
+          ),
+          sw20
+        ],
+        automaticallyImplyLeading: false,
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // CarouselSlider for the promotional banners
-          CarouselSlider(
-            options: CarouselOptions(
-              height: 200,
-              autoPlay: false,
-              enlargeCenterPage: false,
-              onPageChanged: (index, reason) {
-                controller.onPageChanged(index);
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            sh8,
+            GestureDetector(
+              onTap: () {
+                Get.to(() => SearchView());
               },
-            ),
-            items: [
-              PromoBanner(),
-              // PromoBanner(),
-              // PromoBanner(),
-            ],
-          ),
-          const SizedBox(height: 8),
-          // Pagination dots using SmoothPageIndicator
-          Obx(
-                () => SmoothPageIndicator(
-              controller: PageController(initialPage: controller.currentIndex.value),
-              count: 3,
-              effect: const WormEffect(
-                dotHeight: 8,
-                dotWidth: 8,
-                activeDotColor: Colors.black,
-                dotColor: Colors.grey,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PromoBanner extends StatelessWidget {
-  const PromoBanner({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          // Left side: Text and Button
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "New Collection",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+              child: Container(
+                height: 48,
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: AppColors.white,
+                  border: Border.all(color: AppColors.silver),
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      AppImages.search,
+                      scale: 4,
+                    ),
+                    sw12,
+                    Text(
+                      'Looking for sneakers',
+                      style: h5.copyWith(color: AppColors.grey),
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
-                "20% Discount",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black54,
+            ),
+            sh16,
+            CarouselSlider(
+              options: CarouselOptions(
+                height: 170,
+                autoPlay: true,
+                enlargeCenterPage: false,
+                onPageChanged: (index, reason) {
+                  controller.onPageChanged(index);
+                },
+              ),
+              items: promoBanners,
+            ),
+            sh12,
+            Obx(
+              () => Center(
+                child: SmoothPageIndicator(
+                  controller: PageController(
+                    initialPage: controller.currentIndex.value,
+                  ),
+                  count: promoBanners.length,
+                  effect: const WormEffect(
+                    dotHeight: 8,
+                    dotWidth: 8,
+                    activeDotColor: Colors.black,
+                    dotColor: Colors.grey,
+                  ),
                 ),
               ),
-              const SizedBox(height: 16),
-              CustomButton(
-                  width: 100,
-                  text: 'Rent now', onPressed: (){
-                Get.find<HomeController>().onRentNowPressed();
-              }),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     controller.onRentNowPressed();
-              //   },
-              //   style: ElevatedButton.styleFrom(
-              //     backgroundColor: Colors.black,
-              //     shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(20),
-              //     ),
-              //     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              //   ),
-              //   child: const Text(
-              //     "Rent now",
-              //     style: TextStyle(
-              //       color: Colors.white,
-              //       fontSize: 16,
-              //     ),
-              //   ),
-              // ),
-            ],
-          ),
-          // Right side: Shoe Image
-          Expanded(
-            child: Image.asset(
-              AppImages.productImage,
-              fit: BoxFit.contain,
             ),
-          ),
-        ],
+            sh16,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                'Recommended For you',
+                style: h3,
+              ),
+            ),
+            sh8,
+            SizedBox(
+              height: 230,
+              child: ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      right: index == 4 - 1 ? 0 : 8,
+                      bottom: 16,
+                    ),
+                    child: RecommendedShoeCard(
+                      imagePath: AppImages.productRedWhiteNike,
+                      name: 'Nike Jordan',
+                      price: '\$60',
+                    ),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: CustomRowHeader(
+                title: 'Trending Sneakers',
+                subtitle: 'See All',
+                onTap: () {},
+              ),
+            ),
+            sh8,
+            SizedBox(
+              height: 190,
+              child: ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      right: index == 4 - 1 ? 0 : 8,
+                      bottom: 16,
+                    ),
+                    child: TrendingShoeCard(
+                      imagePath: AppImages.productTrending,
+                      name: 'Nike Jordan',
+                      price: '\$33',
+                    ),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: CustomRowHeader(
+                title: 'New Sneakers',
+                subtitle: 'See All',
+                onTap: () {},
+              ),
+            ),
+            sh8,
+            SizedBox(
+              height: 135,
+              child: ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      bottom: 16,
+                    ),
+                    child: NewShoeCard(
+                      imagePath: AppImages.productNewSneakers,
+                      // Replace with your image path
+                      productName: 'Nike Air Force 1',
+                      price: '\$55',
+                      title: 'Best Choice',
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

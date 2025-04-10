@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sole_swap/common/app_color/app_colors.dart';
 
 import '../app_text_style/styles.dart';
 
@@ -11,7 +12,7 @@ class CustomRowHeader extends StatelessWidget {
   });
 
   final String title;
-  final Widget subtitle;
+  final String subtitle;
   final VoidCallback onTap;
 
   @override
@@ -21,17 +22,24 @@ class CustomRowHeader extends StatelessWidget {
       children: [
         Text(
           title,
-          style: h4.copyWith(fontWeight: FontWeight.bold),
+          style: h3,
         ),
         GestureDetector(
           onTap: onTap,
-          child: subtitle,
+          child: Text(
+            subtitle,
+            style: h5.copyWith(
+              fontWeight: FontWeight.w500,
+              color: AppColors.textColorOrange,
+              decoration: TextDecoration.underline,
+              decorationThickness: 2,
+              decorationColor: AppColors.textColorOrange,
+            ),
+          ),
         ),
       ],
     );
   }
 }
-
-
 
 //style: h5.copyWith(color: AppColors.textColorBlue,fontWeight: FontWeight.bold),

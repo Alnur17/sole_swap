@@ -3,6 +3,7 @@ class AppImages {
   static const splashLogo = "assets/icons/logo.png";
   static const authLogo = "assets/icons/logo light.png";
   static const authBack = "assets/images/authBack.png";
+  static const arrowBack = "assets/icons/arrow back.png";
   static const arrowRight = "assets/icons/arrow right.png";
   static const home = "assets/icons/home.png";
   static const homeFilled = "assets/icons/home filled.png";
@@ -23,19 +24,26 @@ class AppImages {
   static const facebook = "assets/icons/facebook.png";
   static const google = "assets/icons/google.png";
   static const apple = "assets/icons/apple.png";
-  static const bookmarkSmall = "assets/icons/bookmark-small.png";
+  static const addBookmark = "assets/icons/add bookmarks.png";
   static const close = "assets/icons/close.png";
   static const threeDot = "assets/icons/three dot.png";
   static const camera = "assets/icons/camera.png";
   static const eyeClose = "assets/icons/eye close.png";
   static const checkbox = "assets/icons/checkbox.png";
+  static const notification = "assets/icons/notification.png";
+  static const shop = "assets/icons/shop.png";
 
   //================ Images ==================>
   static const onboardingOne = "assets/images/onboarding 1.png";
   static const onboardingTwo = "assets/images/onboarding 2.png";
   static const onboardingThree = "assets/images/onboarding 3.png";
   static const homePromo = "assets/images/home promo image.png";
-  static const productImage = 'assets/images/product Image.png';
+  static const promoImageOne = 'assets/images/promo 1.png';
+  static const promoImageTwo = 'assets/images/promo 2.png';
+  static const promoImageThree = 'assets/images/promo 3.png';
+  static const  productNewSneakers = 'assets/images/new sneakers.png';
+  static const  productRedWhiteNike = 'assets/images/red white nike.png';
+  static const  productTrending = 'assets/images/trending shoe.png';
 
   static const onboardingBackTwo = "assets/images/onboarding background 2.png";
   static const authHome = "assets/images/auth home back.png";
