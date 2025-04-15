@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
+
+import '../../../../../common/app_color/app_colors.dart';
+import '../../../../../common/app_images/app_images.dart';
+import '../../../../../common/app_text_style/styles.dart';
+import '../../../../../common/helper/new_shoe_card.dart';
+import '../../../../../common/size_box/custom_sizebox.dart';
+import '../../../../../common/widgets/custom_circular_container.dart';
+
+class NewSneakersView extends GetView {
+  const NewSneakersView({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        backgroundColor: AppColors.transparent,
+        scrolledUnderElevation: 0,
+        title: Text(
+          'New Sneakers',
+          style: titleStyle,
+        ),
+        centerTitle: true,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: CustomCircularContainer(
+            imagePath: AppImages.arrowBack,
+            onTap: () {
+              Get.back();
+            },
+            padding: 4,
+          ),
+        ),
+        actions: [
+          CustomCircularContainer(
+            imagePath: AppImages.shop,
+            onTap: () {},
+          ),
+          sw20,
+        ],
+      ),
+      body: Column(
+        children: [
+          //sh20,
+          Expanded(
+            child: ListView.builder(
+              //padding: EdgeInsets.symmetric(horizontal: 16),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: 15,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    bottom: 16,
+                  ),
+                  child: NewShoeCard(
+                    imagePath: AppImages.productNewSneakers,
+                    productName: 'Nike Air Force 1',
+                    price: '\$55',
+                    title: 'Best Choice',
+                    onTap: () {},
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

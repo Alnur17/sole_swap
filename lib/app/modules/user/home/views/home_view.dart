@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sole_swap/app/modules/user/home/views/new_sneakers_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/search_view.dart';
+import 'package:sole_swap/app/modules/user/home/views/trending_sneakers_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/widgets/promo_banner.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
 import 'package:sole_swap/common/helper/new_shoe_card.dart';
@@ -218,7 +220,9 @@ class _HomeViewState extends State<HomeView> {
               child: CustomRowHeader(
                 title: 'Trending Sneakers',
                 subtitle: 'See All',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => TrendingSneakersView());
+                },
               ),
             ),
             sh8,
@@ -239,6 +243,9 @@ class _HomeViewState extends State<HomeView> {
                       imagePath: AppImages.productTrending,
                       name: 'Nike Jordan',
                       price: '\$33',
+                      onTap: () {
+                        // Get.to(()=> TrendingSneakersView());
+                      },
                     ),
                   );
                 },
@@ -249,7 +256,9 @@ class _HomeViewState extends State<HomeView> {
               child: CustomRowHeader(
                 title: 'New Sneakers',
                 subtitle: 'See All',
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => NewSneakersView());
+                },
               ),
             ),
             sh8,
@@ -267,10 +276,10 @@ class _HomeViewState extends State<HomeView> {
                     ),
                     child: NewShoeCard(
                       imagePath: AppImages.productNewSneakers,
-                      // Replace with your image path
                       productName: 'Nike Air Force 1',
                       price: '\$55',
                       title: 'Best Choice',
+                      onTap: () {},
                     ),
                   );
                 },
