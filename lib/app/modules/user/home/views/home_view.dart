@@ -186,7 +186,7 @@ class _HomeViewState extends State<HomeView> {
             ),
             sh16,
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 'Recommended For you',
                 style: h3,
@@ -196,7 +196,7 @@ class _HomeViewState extends State<HomeView> {
             SizedBox(
               height: 230,
               child: ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: 4,
@@ -229,7 +229,7 @@ class _HomeViewState extends State<HomeView> {
             SizedBox(
               height: 190,
               child: ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: 4,
@@ -265,7 +265,9 @@ class _HomeViewState extends State<HomeView> {
             SizedBox(
               height: 135,
               child: ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20,
+                ),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: 4,
@@ -273,6 +275,7 @@ class _HomeViewState extends State<HomeView> {
                   return Padding(
                     padding: EdgeInsets.only(
                       bottom: 16,
+                      right: index == 4 - 1 ? 0 : 8,
                     ),
                     child: NewShoeCard(
                       imagePath: AppImages.productNewSneakers,

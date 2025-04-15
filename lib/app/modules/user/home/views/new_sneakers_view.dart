@@ -11,6 +11,7 @@ import '../../../../../common/widgets/custom_circular_container.dart';
 
 class NewSneakersView extends GetView {
   const NewSneakersView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,17 +44,17 @@ class NewSneakersView extends GetView {
       ),
       body: Column(
         children: [
-          //sh20,
           Expanded(
             child: ListView.builder(
-              //padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
               itemCount: 15,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(
-                    bottom: 16,
+                    bottom: index == 15 - 1 ? 20 : 8,
+                    top: index == 0 ? 20 : 0,
                   ),
                   child: NewShoeCard(
                     imagePath: AppImages.productNewSneakers,

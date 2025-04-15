@@ -27,7 +27,7 @@ class NewShoeCard extends StatelessWidget {
       child: Container(
         height: 135,
         width: Get.width * 0.8,
-        margin: const EdgeInsets.symmetric(horizontal: 6),
+        //margin: const EdgeInsets.symmetric(horizontal: 6),
         decoration: BoxDecoration(
           color: AppColors.white,
           border: Border.all(color: AppColors.silver),
