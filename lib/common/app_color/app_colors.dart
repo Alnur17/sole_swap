@@ -9,6 +9,7 @@ class AppColors {
   static const bottomNavbar = Color(0xffF9F9F9);
   static const textColorBlue = Color(0xff2C50ED);
   static const textColorOrange = Color(0xffD8B600);
+  static const containerColor = Color(0xffFEF5D3);
   static const gradientColor = [Color(0xffD8B600), Color(0xffDBBC17), Color(0xffB59900)];
 
   //fixed color
@@ -34,5 +35,6 @@ class AppColors {
   static const orange = Color(0xffff6200);
   static const orangeLight = Color(0xffFFAE35);
   static const red = Color(0xffff3c00);
+  static const darkRed = Color(0xffB45309);
   static const purple = Color(0xff5366BE);
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sole_swap/app/modules/user/Favorites/views/favorites_view.dart';
+import 'package:sole_swap/app/modules/user/Profile/views/profile_view.dart';
+import 'package:sole_swap/app/modules/user/Vendor/views/vendor_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/home_view.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
 import '../controllers/dashboard_controller.dart';
@@ -17,9 +20,9 @@ class _DashboardViewState extends State<DashboardView> {
 
   static const List<Widget> _pages = [
     HomeView(),
-    Center(child: Text('Vendor Page')),
-    Center(child: Text('Favorites Page')),
-    Center(child: Text('Profile Page')),
+    VendorView(),
+    FavoritesView(),
+    ProfileView(),
   ];
 
   @override

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:sole_swap/app/modules/user/home/views/new_sneakers_view.dart';
+import 'package:sole_swap/app/modules/user/home/views/product_details_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/search_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/trending_sneakers_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/widgets/promo_banner.dart';
@@ -244,7 +245,7 @@ class _HomeViewState extends State<HomeView> {
                       name: 'Nike Jordan',
                       price: '\$33',
                       onTap: () {
-                        // Get.to(()=> TrendingSneakersView());
+                        Get.to(()=> ProductDetailsView());
                       },
                     ),
                   );

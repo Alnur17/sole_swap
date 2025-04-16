@@ -14,6 +14,12 @@ import '../modules/onboarding/bindings/onboarding_binding.dart';
 import '../modules/onboarding/views/onboarding_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/user/Favorites/bindings/favorites_binding.dart';
+import '../modules/user/Favorites/views/favorites_view.dart';
+import '../modules/user/Profile/bindings/profile_binding.dart';
+import '../modules/user/Profile/views/profile_view.dart';
+import '../modules/user/Vendor/bindings/vendor_binding.dart';
+import '../modules/user/Vendor/views/vendor_view.dart';
 import '../modules/user/dashboard/bindings/dashboard_binding.dart';
 import '../modules/user/dashboard/views/dashboard_view.dart';
 import '../modules/user/home/bindings/home_binding.dart';
@@ -85,6 +91,21 @@ class AppPages {
       name: _Paths.FORGOT_PASSWORD,
       page: () => const ForgotPasswordView(),
       binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.FAVORITES,
+      page: () => const FavoritesView(),
+      binding: FavoritesBinding(),
+    ),
+    GetPage(
+      name: _Paths.VENDOR,
+      page: () => const VendorView(),
+      binding: VendorBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }

@@ -4,17 +4,27 @@ import '../../../../../common/app_images/app_images.dart';
 
 class HomeController extends GetxController {
 
-  // var images = <String>[].obs;
-  //
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   images.addAll([
-  //     AppImages.productImage,
-  //     AppImages.onboardingOne,
-  //     AppImages.onboardingTwo,
-  //   ]);
-  // }
+  var selectedDuration = 3.obs; // Default selected duration (3 Day)
+  var selectedUsSize = 'US 8'.obs;
+  var selectedUkSize = 'UK 7'.obs;
+  var selectedEuSize = 'EU 42'.obs;
+  var images = [].obs;
+
+  void selectDuration(int duration) {
+    selectedDuration.value = duration;
+  }
+
+ // var images = <String>[].obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    images.addAll([
+      AppImages.productTrending,
+      AppImages.productTrending,
+      AppImages.productTrending,
+    ]);
+  }
 
   var currentIndex = 0.obs;
 

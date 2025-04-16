@@ -5,6 +5,7 @@ class AppImages {
   static const authBack = "assets/images/authBack.png";
   static const arrowBack = "assets/icons/arrow back.png";
   static const arrowRight = "assets/icons/arrow right.png";
+  static const arrowDown = "assets/icons/arrow down.png";
   static const home = "assets/icons/home.png";
   static const homeFilled = "assets/icons/home filled.png";
   static const vendor = "assets/icons/vendor.png";
@@ -32,6 +33,20 @@ class AppImages {
   static const checkbox = "assets/icons/checkbox.png";
   static const notification = "assets/icons/notification.png";
   static const shop = "assets/icons/shop.png";
+  static const location = "assets/icons/location.png";
+  static const edit = "assets/icons/edit.png";
+  static const right = "assets/icons/right.png";
+  static const stars = "assets/icons/stars.png";
+  static const aboutUs = "assets/icons/about us.png";
+  static const locationOutline = "assets/icons/location outline.png";
+  static const logout = "assets/icons/logout.png";
+  static const notifications = "assets/icons/notifications.png";
+  static const order = "assets/icons/Order.png";
+  static const person = "assets/icons/person.png";
+  static const privacy = "assets/icons/privacy.png";
+  static const returns = "assets/icons/return.png";
+  static const settings = "assets/icons/settings.png";
+  static const termsOfServices = "assets/icons/terms and conditions.png";
 
   //================ Images ==================>
   static const onboardingOne = "assets/images/onboarding 1.png";
@@ -54,6 +69,7 @@ class AppImages {
   static const verifyCodeImage = "assets/images/verify code.png";
   static const verifyEmailImage = "assets/images/verify email code.png";
   static const enterPhoneNumber = "assets/images/enter phone number.png";
+  static const storeImage = "assets/images/store image.png";
 
   static const profileImage = 'https://images.unsplash.com/photo-1578320339911-5e7974b2720a?q=80&w=778&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
   static const profileImageTwo = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D';

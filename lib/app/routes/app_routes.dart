@@ -14,6 +14,9 @@ abstract class Routes {
   static const VENDOR_DASHBOARD = _Paths.VENDOR_DASHBOARD;
   static const VENDOR_HOME = _Paths.VENDOR_HOME;
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
+  static const FAVORITES = _Paths.FAVORITES;
+  static const VENDOR = _Paths.VENDOR;
+  static const PROFILE = _Paths.PROFILE;
 }
 
 abstract class _Paths {
@@ -29,4 +32,7 @@ abstract class _Paths {
   static const VENDOR_DASHBOARD = '/vendor-dashboard';
   static const VENDOR_HOME = '/vendor-home';
   static const FORGOT_PASSWORD = '/forgot-password';
+  static const FAVORITES = '/favorites';
+  static const VENDOR = '/vendor';
+  static const PROFILE = '/profile';
 }
