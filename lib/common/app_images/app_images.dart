@@ -47,6 +47,11 @@ class AppImages {
   static const returns = "assets/icons/return.png";
   static const settings = "assets/icons/settings.png";
   static const termsOfServices = "assets/icons/terms and conditions.png";
+  static const delete = "assets/icons/delete.png";
+  static const editBig = "assets/icons/edit big.png";
+  static const minus = "assets/icons/minus.png";
+  static const plus = "assets/icons/plus.png";
+  static const success = "assets/icons/success.png";
 
   //================ Images ==================>
   static const onboardingOne = "assets/images/onboarding 1.png";

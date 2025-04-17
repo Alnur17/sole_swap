@@ -20,6 +20,8 @@ import '../modules/user/Profile/bindings/profile_binding.dart';
 import '../modules/user/Profile/views/profile_view.dart';
 import '../modules/user/Vendor/bindings/vendor_binding.dart';
 import '../modules/user/Vendor/views/vendor_view.dart';
+import '../modules/user/cart/bindings/cart_binding.dart';
+import '../modules/user/cart/views/cart_view.dart';
 import '../modules/user/dashboard/bindings/dashboard_binding.dart';
 import '../modules/user/dashboard/views/dashboard_view.dart';
 import '../modules/user/home/bindings/home_binding.dart';
@@ -34,7 +36,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.CART;
 
   static final routes = [
     GetPage(
@@ -106,6 +108,11 @@ class AppPages {
       name: _Paths.PROFILE,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.CART,
+      page: () => const CartView(),
+      binding: CartBinding(),
     ),
   ];
 }

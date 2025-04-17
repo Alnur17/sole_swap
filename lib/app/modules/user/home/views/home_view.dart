@@ -16,6 +16,7 @@ import 'package:sole_swap/common/size_box/custom_sizebox.dart';
 import 'package:sole_swap/common/widgets/custom_row_header.dart';
 import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
+import '../../cart/views/cart_view.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends StatefulWidget {
@@ -105,7 +106,9 @@ class _HomeViewState extends State<HomeView> {
           ),
           sw8,
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.to(() => CartView());
+            },
             child: Container(
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
@@ -245,7 +248,7 @@ class _HomeViewState extends State<HomeView> {
                       name: 'Nike Jordan',
                       price: '\$33',
                       onTap: () {
-                        Get.to(()=> ProductDetailsView());
+                        Get.to(() => ProductDetailsView());
                       },
                     ),
                   );

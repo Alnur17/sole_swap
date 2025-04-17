@@ -17,6 +17,7 @@ abstract class Routes {
   static const FAVORITES = _Paths.FAVORITES;
   static const VENDOR = _Paths.VENDOR;
   static const PROFILE = _Paths.PROFILE;
+  static const CART = _Paths.CART;
 }
 
 abstract class _Paths {
@@ -35,4 +36,5 @@ abstract class _Paths {
   static const FAVORITES = '/favorites';
   static const VENDOR = '/vendor';
   static const PROFILE = '/profile';
+  static const CART = '/cart';
 }
