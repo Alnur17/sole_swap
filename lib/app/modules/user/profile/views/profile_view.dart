@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sole_swap/app/modules/user/profile/views/about_us_view.dart';
+import 'package:sole_swap/app/modules/user/profile/views/delivery_address_view.dart';
+import 'package:sole_swap/app/modules/user/profile/views/orders_view.dart';
+import 'package:sole_swap/app/modules/user/profile/views/privacy_policy_view.dart';
+import 'package:sole_swap/app/modules/user/profile/views/return_view.dart';
 import 'package:sole_swap/app/modules/user/profile/views/settings_view.dart';
+import 'package:sole_swap/app/modules/user/profile/views/terms_of_services_view.dart';
 
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
@@ -19,12 +25,12 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.mainColor,
       appBar: AppBar(
-        backgroundColor: AppColors.transparent,
+        backgroundColor: AppColors.background,
         scrolledUnderElevation: 0,
         title: Text(
-          'Vendor Details',
+          'Profile',
           style: titleStyle,
         ),
         centerTitle: true,
@@ -93,6 +99,20 @@ class ProfileView extends GetView<ProfileController> {
                   Get.to(() => SettingsView());
                 },
                 leading: Image.asset(
+                  AppImages.settings,
+                  scale: 4,
+                ),
+                title: Text('Settings'),
+                trailing: Image.asset(
+                  AppImages.arrowRight,
+                  scale: 4,
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  Get.to(() => DeliveryAddressView());
+                },
+                leading: Image.asset(
                   AppImages.locationOutline,
                   scale: 4,
                 ),
@@ -104,7 +124,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.to(() => SettingsView());
+                  Get.to(() => OrdersView());
                 },
                 leading: Image.asset(
                   AppImages.order,
@@ -118,7 +138,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.to(() => SettingsView());
+                  Get.to(() => ReturnView());
                 },
                 leading: Image.asset(
                   AppImages.returns,
@@ -145,7 +165,9 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               ),
               ListTile(
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => AboutUsView());
+                },
                 leading: Image.asset(
                   AppImages.aboutUs,
                   scale: 4,
@@ -158,7 +180,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.to(() => SettingsView());
+                  Get.to(() => PrivacyPolicyView());
                 },
                 leading: Image.asset(
                   AppImages.privacy,
@@ -172,7 +194,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.to(() => SettingsView());
+                  Get.to(() => TermsOfServicesView());
                 },
                 leading: Image.asset(
                   AppImages.termsOfServices,
@@ -186,14 +208,16 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.offAll(() => SignInView(),
-                      transition: Transition.leftToRight);
+                  _showLogoutPopup();
                 },
                 leading: Image.asset(
                   AppImages.logout,
                   scale: 4,
                 ),
-                title: Text('Sign Out'),
+                title: Text(
+                  'Sign Out',
+                  style: TextStyle(color: AppColors.darkRed),
+                ),
                 trailing: Image.asset(
                   AppImages.arrowRight,
                   scale: 4,
@@ -206,4 +230,59 @@ class ProfileView extends GetView<ProfileController> {
       ),
     );
   }
+
+  void _showLogoutPopup() {
+    Get.dialog(
+      AlertDialog(
+        backgroundColor: AppColors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: Text('Do you want to logout?',
+            style: h3, textAlign: TextAlign.center),
+        actionsAlignment: MainAxisAlignment.center,
+        actions: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              OutlinedButton(
+                onPressed: () {
+                  // log('========== User token ========== ${LocalStorage.getData(key: AppConstant.token)}');
+                  // LocalStorage.removeData(key: AppConstant.token);
+                  Get.offAll(() => SignInView(),
+                      transition: Transition.leftToRight);
+                },
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: AppColors.darkRed,
+                  //side: BorderSide(color: AppColors.mainColor, width: 1.5),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  minimumSize: Size(100, 40),
+                ),
+                child: Text(
+                  'Yes',
+                  style: h3.copyWith(fontSize: 14, color: AppColors.mainColor),
+                ),
+              ),
+              SizedBox(width: 16),
+              ElevatedButton(
+                onPressed: () => Get.back(),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.mainColor,
+                  side: BorderSide(color: AppColors.darkRed, width: 1.5),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  minimumSize: Size(100, 40),
+                ),
+                child: Text(
+                  'No',
+                  style: h3.copyWith(fontSize: 14, color: AppColors.darkRed),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+
 }

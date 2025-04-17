@@ -52,6 +52,12 @@ class AppImages {
   static const minus = "assets/icons/minus.png";
   static const plus = "assets/icons/plus.png";
   static const success = "assets/icons/success.png";
+  static const add = "assets/icons/add.png";
+  static const circleCheckbox = "assets/icons/circle checkbox.png";
+  static const delivered = "assets/icons/delivered.png";
+  static const inProgress = "assets/icons/in progress.png";
+  static const shipped = "assets/icons/shipped.png";
+  static const trackOrder = "assets/icons/track order.png";
 
   //================ Images ==================>
   static const onboardingOne = "assets/images/onboarding 1.png";
