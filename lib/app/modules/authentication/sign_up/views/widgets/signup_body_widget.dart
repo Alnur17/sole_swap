@@ -4,8 +4,8 @@ import 'package:sole_swap/common/app_images/app_images.dart';
 
 import '../../../../../../common/app_color/app_colors.dart';
 import '../../../../../../common/app_text_style/styles.dart';
+import '../../../../../../common/helper/upload_widget.dart';
 import '../../../../../../common/size_box/custom_sizebox.dart';
-import '../../../../../../common/widgets/custom_button.dart';
 import '../../../../../../common/widgets/custom_textfield.dart';
 import '../../controllers/sign_up_controller.dart';
 
@@ -97,14 +97,12 @@ class _SignupBodyWidgetState extends State<SignupBodyWidget> {
           children: [
             Expanded(
               child: CustomTextField(
-
                 hintText: 'First name',
               ),
             ),
             sw12,
             Expanded(
               child: CustomTextField(
-
                 hintText: 'Last name',
               ),
             ),
@@ -142,41 +140,40 @@ class _SignupBodyWidgetState extends State<SignupBodyWidget> {
   Widget _buildVendorInterface() {
     return Column(
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: CustomTextField(
-                // preIcon: Image.asset(AppImages.person, scale: 4),
-                hintText: 'First name',
-              ),
-            ),
-            sw12,
-            Expanded(
-              child: CustomTextField(
-                // preIcon: Image.asset(AppImages.person, scale: 4),
-                hintText: 'Last name',
-              ),
-            ),
-          ],
+        CustomTextField(
+          hintText: 'Shop name',
         ),
         sh8,
         CustomTextField(
-          //preIcon: Image.asset(AppImages.message, scale: 4),
-          hintText: 'Enter your email',
+          height: 100,
+          hintText: 'Shop Description',
         ),
         sh8,
         CustomTextField(
-          //preIcon: Image.asset(AppImages.message, scale: 4),
+          hintText: 'saiidromea@gmail.com',
+        ),
+        sh8,
+        CustomTextField(
           hintText: 'Enter your location',
         ),
         sh8,
         CustomTextField(
-          //preIcon: Image.asset(AppImages.message, scale: 4),
           hintText: 'Enter your number',
         ),
         sh8,
+        UploadWidget(
+          onTap: () {},
+          imagePath: AppImages.add,
+          label: 'Upload Cover Photo',
+        ),
+        sh8,
+        UploadWidget(
+          onTap: () {},
+          imagePath: AppImages.add,
+          label: 'Upload Tax Document',
+        ),
+        sh8,
         CustomTextField(
-          //preIcon: Image.asset(AppImages.lock, scale: 4),
           hintText: 'Enter your password',
         ),
         sh8,

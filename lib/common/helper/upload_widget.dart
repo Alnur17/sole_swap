@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sole_swap/common/app_color/app_colors.dart';
 
 import '../../../../../../common/app_text_style/styles.dart';
 
@@ -30,7 +31,7 @@ class UploadWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: Colors.black, // Replace with your AppColors.black
+          color: AppColors.grey,
           style: BorderStyle.solid,
         ),
       ),
@@ -39,7 +40,7 @@ class UploadWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 8), // Replace with your sw8 if necessary
+            SizedBox(height: 8),
             Container(
               height: iconSize,
               width: iconSize,
@@ -52,10 +53,10 @@ class UploadWidget extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(height: 10), // Replace with your sh10 if necessary
+            SizedBox(height: 10),
             Text(
               label,
-              style: labelStyle ?? h2,
+              style: labelStyle ?? h5.copyWith(color: Colors.grey),
             ),
           ],
         ),

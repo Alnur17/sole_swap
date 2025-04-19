@@ -7,7 +7,9 @@ import 'package:sole_swap/common/widgets/custom_button.dart';
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/helper/order_card.dart';
+import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../../common/widgets/custom_textfield.dart';
 
 class OrdersView extends StatelessWidget {
   const OrdersView({super.key});
@@ -32,7 +34,7 @@ class OrdersView extends StatelessWidget {
             ),
           ),
           title: Text(
-            'Cart',
+            'Order',
             style: appBarStyle,
           ),
           centerTitle: true,
@@ -91,6 +93,7 @@ class OrderList extends StatelessWidget {
       },
     );
   }
+
   void showWriteReviewBottomSheet(BuildContext context) {
     showModalBottomSheet(
       backgroundColor: AppColors.white,
@@ -109,104 +112,81 @@ class OrderList extends StatelessWidget {
               // Title
               const Center(
                 child: Text(
-                  'WRITE REVIEW',
+                  'Write Review',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              sh16,
               // Product Info
-              Row(
-                children: [
-                  // Placeholder for product image
-                  Container(
-                    width: 60,
-                    height: 60,
-                    color: Colors.grey[300], // Placeholder for the shoe image
-                    child: const Icon(Icons.image, color: Colors.grey),
-                  ),
-                  const SizedBox(width: 16),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        'Nike Air Force I',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      Text(
-                        '4212 Pcs',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Text(
-                        '\$33',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+              OrderCard(
+                image: AppImages.productTrending,
+                name: "Nike Air Force 1",
+                size: "Size: 42 | 2 Pcs",
+                price: "\$33",
               ),
-              const SizedBox(height: 16),
-              // Rating Section
-              const Text(
-                'HOW IS YOUR ORDER',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+              sh16,
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'How is your order',
+                  style: h3,
                 ),
               ),
-              const SizedBox(height: 8),
+              sh5,
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'Please give your rating',
+                  style: h6,
+                ),
+              ),
+              sh8,
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
                   5,
-                      (index) => const Icon(
-                    Icons.star_border,
-                    color: Colors.amber,
+                  (index) => const Icon(
+                    Icons.star,
+                    color: AppColors.textColorOrange,
                     size: 30,
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              sh16,
               // Review Text Field
-              const Text(
-                'Add details',
+              Text(
+                'Add details review',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              const SizedBox(height: 8),
-              TextField(
-                maxLines: 4,
-                decoration: InputDecoration(
-                  hintText: 'Share here',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
+              sh8,
+              CustomTextField(
+                height: 100,
+                hintText: 'Enter here',
+              ),
+              sh16,
+              Row(
+                children: [
+                  Image.asset(
+                    AppImages.gallery,
+                    scale: 4,
                   ),
-                ),
+                  sw8,
+                  Text(
+                    'Add photo',
+                    style: h5,
+                  ),
+                ],
               ),
-              const SizedBox(height: 16),
-              // Add Photo Button
-              TextButton.icon(
-                onPressed: () {},
-                icon: const Icon(Icons.camera_alt),
-                label: const Text('Add photo'),
-              ),
-              const SizedBox(height: 16),
+              sh16,
               // Submit Button
-              CustomButton(text: 'Submit', onPressed: (){}),
-              const SizedBox(height: 16),
+              CustomButton(text: 'Submit', onPressed: () {}),
+              sh16,
             ],
           ),
         );

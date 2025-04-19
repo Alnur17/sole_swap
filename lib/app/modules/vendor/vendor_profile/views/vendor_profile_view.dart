@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sole_swap/app/modules/user/profile/views/about_us_view.dart';
-import 'package:sole_swap/app/modules/user/profile/views/delivery_address_view.dart';
-import 'package:sole_swap/app/modules/user/profile/views/orders_view.dart';
-import 'package:sole_swap/app/modules/user/profile/views/privacy_policy_view.dart';
-import 'package:sole_swap/app/modules/user/profile/views/return_view.dart';
-import 'package:sole_swap/app/modules/user/profile/views/settings_view.dart';
-import 'package:sole_swap/app/modules/user/profile/views/terms_of_services_view.dart';
+import 'package:sole_swap/app/modules/vendor/vendor_profile/views/vendor_edit_profile_view.dart';
 
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
@@ -15,13 +9,10 @@ import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
 import '../../../authentication/sign_in/views/sign_in_view.dart';
-import '../controllers/profile_controller.dart';
-import 'edit_profile_view.dart';
-import 'notifications_view.dart';
+import '../controllers/vendor_profile_controller.dart';
 
-class ProfileView extends GetView<ProfileController> {
-  const ProfileView({super.key});
-
+class VendorProfileView extends GetView<VendorProfileController> {
+  const VendorProfileView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,13 +67,13 @@ class ProfileView extends GetView<ProfileController> {
               ),
               sh16,
               Text(
-                'Saiid Romeo',
+                'Sneaker Vault',
                 style: h2,
               ),
               sh24,
               ListTile(
                 onTap: () {
-                  Get.to(() => EditProfileView());
+                  Get.to(() => VendorEditProfileView());
                 },
                 leading: Image.asset(
                   AppImages.person,
@@ -96,7 +87,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.to(() => SettingsView());
+                  //Get.to(() => SettingsView());
                 },
                 leading: Image.asset(
                   AppImages.settings,
@@ -110,41 +101,13 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.to(() => DeliveryAddressView());
-                },
-                leading: Image.asset(
-                  AppImages.locationOutline,
-                  scale: 4,
-                ),
-                title: Text('Delivery Address'),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
-                ),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.to(() => OrdersView());
-                },
-                leading: Image.asset(
-                  AppImages.order,
-                  scale: 4,
-                ),
-                title: Text('Orders'),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
-                ),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.to(() => ReturnView());
+                  //Get.to(() => ReturnView());
                 },
                 leading: Image.asset(
                   AppImages.returns,
                   scale: 4,
                 ),
-                title: Text('Return'),
+                title: Text('Payment'),
                 trailing: Image.asset(
                   AppImages.arrowRight,
                   scale: 4,
@@ -152,7 +115,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.to(() => NotificationsView());
+                  //Get.to(() => NotificationsView());
                 },
                 leading: Image.asset(
                   AppImages.notifications,
@@ -166,7 +129,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.to(() => AboutUsView());
+                  //Get.to(() => AboutUsView());
                 },
                 leading: Image.asset(
                   AppImages.aboutUs,
@@ -180,7 +143,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.to(() => PrivacyPolicyView());
+                 // Get.to(() => PrivacyPolicyView());
                 },
                 leading: Image.asset(
                   AppImages.privacy,
@@ -194,7 +157,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.to(() => TermsOfServicesView());
+                  //Get.to(() => TermsOfServicesView());
                 },
                 leading: Image.asset(
                   AppImages.termsOfServices,
@@ -283,5 +246,6 @@ class ProfileView extends GetView<ProfileController> {
       ),
     );
   }
+
 
 }

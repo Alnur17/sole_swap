@@ -99,6 +99,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                 child: Image.asset(
                   AppImages.arrowRight,
                   scale: 4,
+                  color: AppColors.white,
                 ),
               ),
             ),

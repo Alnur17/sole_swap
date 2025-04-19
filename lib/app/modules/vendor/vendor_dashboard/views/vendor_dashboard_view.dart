@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sole_swap/app/modules/vendor/earnings/views/earnings_view.dart';
+import 'package:sole_swap/app/modules/vendor/products/views/products_view.dart';
 import 'package:sole_swap/app/modules/vendor/vendor_dashboard/views/widgets/vendor_bottom_nav_bar.dart';
+import 'package:sole_swap/app/modules/vendor/vendor_home/views/vendor_home_view.dart';
+import 'package:sole_swap/app/modules/vendor/vendor_orders/views/vendor_orders_view.dart';
+import 'package:sole_swap/app/modules/vendor/vendor_profile/views/vendor_profile_view.dart';
 
 import '../../../../../common/app_color/app_colors.dart';
 import '../controllers/vendor_dashboard_controller.dart';
@@ -14,14 +19,15 @@ class VendorDashboardView extends StatefulWidget {
 }
 
 class _VendorDashboardViewState extends State<VendorDashboardView> {
-  final VendorDashboardController controller = Get.put(VendorDashboardController());
+  final VendorDashboardController controller =
+      Get.put(VendorDashboardController());
 
   static const List<Widget> _pages = [
-    Center(child: Text('Home Page')),
-    Center(child: Text('Products Page')),
-    Center(child: Text('Orders Page')),
-    Center(child: Text('Earnings Page')),
-    Center(child: Text('Profile Page')),
+    VendorHomeView(),
+    ProductsView(),
+    VendorOrdersView(),
+    EarningsView(),
+    VendorProfileView(),
   ];
 
   @override

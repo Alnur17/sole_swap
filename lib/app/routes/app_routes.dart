@@ -18,6 +18,13 @@ abstract class Routes {
   static const VENDOR = _Paths.VENDOR;
   static const PROFILE = _Paths.PROFILE;
   static const CART = _Paths.CART;
+  static const ORDERS = _Paths.VENDOR + _Paths.ORDERS;
+  static const EARNINGS = _Paths.VENDOR + _Paths.EARNINGS;
+  static const VENDOR_PROFILE = _Paths.VENDOR + _Paths.VENDOR_PROFILE;
+  static const PRODUCTS = _Paths.VENDOR + _Paths.PRODUCTS;
+  static const VENDOR_ORDERS = _Paths.VENDOR + _Paths.VENDOR_ORDERS;
+  static const VENDOR_EDIT_PROFILE =
+      _Paths.VENDOR + _Paths.VENDOR_PROFILE + _Paths.VENDOR_EDIT_PROFILE;
 }
 
 abstract class _Paths {
@@ -37,4 +44,10 @@ abstract class _Paths {
   static const VENDOR = '/vendor';
   static const PROFILE = '/profile';
   static const CART = '/cart';
+  static const ORDERS = '/orders';
+  static const EARNINGS = '/earnings';
+  static const VENDOR_PROFILE = '/vendor-profile';
+  static const PRODUCTS = '/products';
+  static const VENDOR_ORDERS = '/vendor-orders';
+  static const VENDOR_EDIT_PROFILE = '/vendor-edit-profile';
 }

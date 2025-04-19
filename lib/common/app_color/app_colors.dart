@@ -11,6 +11,7 @@ class AppColors {
   static const textColorOrange = Color(0xffD8B600);
   static const containerColor = Color(0xffFEF5D3);
   static const gradientColor = [Color(0xffD8B600), Color(0xffDBBC17), Color(0xffB59900)];
+  static const buttonGradientColor = [Color(0xffffffff),Color(0xff000000), ];
 
   //fixed color
   static const transparent = Colors.transparent;
