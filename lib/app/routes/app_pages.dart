@@ -18,14 +18,14 @@ import '../modules/user/Favorites/bindings/favorites_binding.dart';
 import '../modules/user/Favorites/views/favorites_view.dart';
 import '../modules/user/Profile/bindings/profile_binding.dart';
 import '../modules/user/Profile/views/profile_view.dart';
-import '../modules/user/Vendor/bindings/vendor_binding.dart';
-import '../modules/user/Vendor/views/vendor_view.dart';
 import '../modules/user/cart/bindings/cart_binding.dart';
 import '../modules/user/cart/views/cart_view.dart';
 import '../modules/user/dashboard/bindings/dashboard_binding.dart';
 import '../modules/user/dashboard/views/dashboard_view.dart';
 import '../modules/user/home/bindings/home_binding.dart';
 import '../modules/user/home/views/home_view.dart';
+import '../modules/user/vendors/bindings/vendor_binding.dart';
+import '../modules/user/vendors/views/vendor_view.dart';
 import '../modules/vendor/earnings/bindings/earnings_binding.dart';
 import '../modules/vendor/earnings/views/earnings_view.dart';
 import '../modules/vendor/products/bindings/products_binding.dart';
@@ -112,34 +112,32 @@ class AppPages {
       name: _Paths.VENDOR,
       page: () => const VendorView(),
       binding: VendorBinding(),
+    ),
+    GetPage(
+      name: _Paths.EARNINGS,
+      page: () => const EarningsView(),
+      binding: EarningsBinding(),
+    ),
+    GetPage(
+      name: _Paths.VENDOR_PROFILE,
+      page: () => const VendorProfileView(),
+      binding: VendorProfileBinding(),
       children: [
         GetPage(
-          name: _Paths.EARNINGS,
-          page: () => const EarningsView(),
-          binding: EarningsBinding(),
-        ),
-        GetPage(
-          name: _Paths.VENDOR_PROFILE,
-          page: () => const VendorProfileView(),
-          binding: VendorProfileBinding(),
-          children: [
-            GetPage(
-              name: _Paths.VENDOR_EDIT_PROFILE,
-              page: () => const VendorEditProfileView(),
-            ),
-          ],
-        ),
-        GetPage(
-          name: _Paths.PRODUCTS,
-          page: () => const ProductsView(),
-          binding: ProductsBinding(),
-        ),
-        GetPage(
-          name: _Paths.VENDOR_ORDERS,
-          page: () => const VendorOrdersView(),
-          binding: VendorOrdersBinding(),
+          name: _Paths.VENDOR_EDIT_PROFILE,
+          page: () => const VendorEditProfileView(),
         ),
       ],
+    ),
+    GetPage(
+      name: _Paths.PRODUCTS,
+      page: () => const ProductsView(),
+      binding: ProductsBinding(),
+    ),
+    GetPage(
+      name: _Paths.VENDOR_ORDERS,
+      page: () => const VendorOrdersView(),
+      binding: VendorOrdersBinding(),
     ),
     GetPage(
       name: _Paths.PROFILE,

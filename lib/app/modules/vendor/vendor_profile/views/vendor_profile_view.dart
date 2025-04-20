@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sole_swap/app/modules/vendor/vendor_profile/views/vendor_about_us.dart';
 import 'package:sole_swap/app/modules/vendor/vendor_profile/views/vendor_edit_profile_view.dart';
+import 'package:sole_swap/app/modules/vendor/vendor_profile/views/vendor_notifications.dart';
+import 'package:sole_swap/app/modules/vendor/vendor_profile/views/vendor_privacy_policy.dart';
+import 'package:sole_swap/app/modules/vendor/vendor_profile/views/vendor_settings.dart';
+import 'package:sole_swap/app/modules/vendor/vendor_profile/views/vendor_terms_of_services.dart';
 
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
@@ -87,7 +92,7 @@ class VendorProfileView extends GetView<VendorProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  //Get.to(() => SettingsView());
+                  Get.to(() => VendorSettings());
                 },
                 leading: Image.asset(
                   AppImages.settings,
@@ -115,7 +120,7 @@ class VendorProfileView extends GetView<VendorProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  //Get.to(() => NotificationsView());
+                  Get.to(() => VendorNotifications());
                 },
                 leading: Image.asset(
                   AppImages.notifications,
@@ -129,7 +134,7 @@ class VendorProfileView extends GetView<VendorProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  //Get.to(() => AboutUsView());
+                  Get.to(() => VendorAboutUsView());
                 },
                 leading: Image.asset(
                   AppImages.aboutUs,
@@ -143,7 +148,7 @@ class VendorProfileView extends GetView<VendorProfileController> {
               ),
               ListTile(
                 onTap: () {
-                 // Get.to(() => PrivacyPolicyView());
+                  Get.to(() => VendorPrivacyPolicy());
                 },
                 leading: Image.asset(
                   AppImages.privacy,
@@ -157,7 +162,7 @@ class VendorProfileView extends GetView<VendorProfileController> {
               ),
               ListTile(
                 onTap: () {
-                  //Get.to(() => TermsOfServicesView());
+                  Get.to(() => VendorTermsOfServicesView());
                 },
                 leading: Image.asset(
                   AppImages.termsOfServices,

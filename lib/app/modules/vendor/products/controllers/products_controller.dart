@@ -2,21 +2,14 @@ import 'package:get/get.dart';
 
 class ProductsController extends GetxController {
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  var selectedTab = 'Trending'.obs; // Default to 'Trending'
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  // Sample data for each tab
+  final String trendingData = 'List of Trending Sneakers:\n- Air Jordan 1\n- Nike Dunk Low';
+  final String newData = 'List of New Sneakers:\n- Adidas Ultraboost\n- Puma RS-X';
 
-  @override
-  void onClose() {
-    super.onClose();
+  // Function to update the selected tab
+  void updateTab(String tab) {
+    selectedTab.value = tab;
   }
-
-  void increment() => count.value++;
 }

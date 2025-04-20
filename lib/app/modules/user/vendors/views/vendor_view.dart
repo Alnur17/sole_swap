@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:sole_swap/app/modules/user/Vendor/views/vendor_details_view.dart';
+import 'package:sole_swap/app/modules/user/vendors/views/vendor_details_view.dart';
 import 'package:sole_swap/common/widgets/search_filed.dart';
 
 import '../../../../../common/app_color/app_colors.dart';
