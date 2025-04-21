@@ -27,6 +27,8 @@ class AppColors {
   static const borderColor = Color(0xffCACACA);
   static const blueLight = Color(0xff105FCB);
   static const blue = Color(0xff1A63A6);
+  static const deepBlue = Color(0xff2F4F4F);
+  static const deepBlueLight = Color(0xffBFC8C8);
   static const blueDark = Color(0xff283891);
   static const lightBlue = Color(0xff40C4FF);
   static const hintColor = Color(0xff8b8989);

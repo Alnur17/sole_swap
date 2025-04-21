@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 import 'package:get/get.dart';
+import 'package:sole_swap/app/modules/vendor/vendor_profile/views/vendor_notifications.dart';
 import 'package:sole_swap/common/app_images/app_images.dart';
 import 'package:sole_swap/common/helper/monthly_card.dart';
 import 'package:sole_swap/common/size_box/custom_sizebox.dart';
@@ -16,7 +17,8 @@ class VendorHomeView extends GetView<VendorHomeController> {
 
   @override
   Widget build(BuildContext context) {
-    String? selectedValue = '2025';
+    var selectedValue = '2025'.obs;
+    var selectedMonth = 'Mar'.obs;
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.background,
@@ -52,7 +54,9 @@ class VendorHomeView extends GetView<VendorHomeController> {
           ),
           actions: [
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Get.to(()=> VendorNotifications());
+              },
               child: Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
@@ -92,30 +96,38 @@ class VendorHomeView extends GetView<VendorHomeController> {
                       )),
                 ),
                 sh20,
-                Text('Sneaker Vault',style: h3.copyWith(fontSize: 20),),
+                Text(
+                  'Sneaker Vault',
+                  style: h3.copyWith(fontSize: 20),
+                ),
                 sh20,
-                Row(
-                  //mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Reusable MetricCard for Total Revenue
-                    Expanded(
-                      child: MonthlyCard(
-                        title: 'Total Revenue',
-                        value: '\$18,322',
-                        percentageChange: '4%',
-                        selectedMonth: 'Mar',
+                Obx(
+                  () => Row(
+                    children: [
+                      Expanded(
+                        child: MonthlyCard(
+                          title: 'Total Revenue',
+                          value: '\$18,322',
+                          percentageChange: '4%',
+                          selectedMonth: selectedMonth.value,
+                          onMonthChanged: (value) {
+                            selectedMonth.value = value!;
+                          },
+                        ),
                       ),
-                    ),
-                    // Reusable MetricCard for Total Products
-                    Expanded(
-                      child: MonthlyCard(
-                        title: 'Total Products',
-                        value: '45,000',
-                        percentageChange: '4%',
-                        selectedMonth: 'Mar',
+                      Expanded(
+                        child: MonthlyCard(
+                          title: 'Total Products',
+                          value: '45,000',
+                          percentageChange: '4%',
+                          selectedMonth: selectedMonth.value,
+                          onMonthChanged: (value) {
+                            selectedMonth.value = value!;
+                          },
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 sh20,
                 Card(
@@ -138,8 +150,8 @@ class VendorHomeView extends GetView<VendorHomeController> {
                                   style: h6,
                                 ),
                                 Container(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 4),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(12),
                                       color: Colors.green[50]),
@@ -152,15 +164,17 @@ class VendorHomeView extends GetView<VendorHomeController> {
                                       sw5,
                                       Text(
                                         '-9%',
-                                        style: h6.copyWith(color: AppColors.green),
+                                        style:
+                                            h6.copyWith(color: AppColors.green),
                                       ),
                                     ],
                                   ),
                                 ),
                               ],
                             ),
-                            CustomDropdown(
-                              value: selectedValue,
+                            Obx(
+                              () => CustomDropdown(
+                                value: selectedValue.value,
                                 items: [
                                   DropdownMenuItem(
                                     value: '2025',
@@ -172,8 +186,9 @@ class VendorHomeView extends GetView<VendorHomeController> {
                                   ),
                                 ],
                                 onChanged: (value) {
-                                  selectedValue = value;
+                                  selectedValue.value = value!;
                                 },
+                              ),
                             ),
                           ],
                         ),

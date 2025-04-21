@@ -46,7 +46,7 @@ class CustomDropdown<T> extends StatelessWidget {
       ),
       child: DropdownButton<T>(
         isExpanded: true,
-        underline: Container(), // Remove default underline
+        underline: Container(),
         icon: Container(
           decoration: const ShapeDecoration(
             shape: CircleBorder(),

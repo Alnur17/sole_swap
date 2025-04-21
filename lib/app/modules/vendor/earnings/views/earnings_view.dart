@@ -1,22 +1,223 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:sole_swap/app/modules/vendor/earnings/views/vendor_earning_details_view.dart';
+import 'package:sole_swap/app/modules/vendor/earnings/views/withdraw_successful_view.dart';
+import 'package:sole_swap/common/app_images/app_images.dart';
+import '../../../../../common/app_color/app_colors.dart';
+import '../../../../../common/app_text_style/styles.dart';
+import '../../../../../common/size_box/custom_sizebox.dart';
+import '../../../../../common/widgets/custom_button.dart';
 
-import '../controllers/earnings_controller.dart';
-
-class EarningsView extends GetView<EarningsController> {
+class EarningsView extends StatefulWidget {
   const EarningsView({super.key});
+
+  @override
+  State<EarningsView> createState() => _EarningsViewState();
+}
+
+class _EarningsViewState extends State<EarningsView> {
+  final List<Map<String, String?>> dummyData = [
+    {
+      'id': '01',
+      'fullName': 'Robert Fox',
+      'accNumber': '(516) 831-1111',
+      'date': '05-24-2025',
+      'amount': '\$200',
+    },
+    {
+      'id': '02',
+      'fullName': 'Jane Doe',
+      'accNumber': '(516) 831-2222',
+      'date': '05-23-2025',
+      'amount': '\$400',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('EarningsView'),
+        backgroundColor: AppColors.transparent,
+        scrolledUnderElevation: 0,
+        title: Text(
+          'Earning',
+          style: titleStyle,
+        ),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
-      body: const Center(
-        child: Text(
-          'EarningsView is working',
-          style: TextStyle(fontSize: 20),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: AppColors.deepBlueLight,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Your Balance',
+                    style:
+                        h4.copyWith(fontSize: 14, fontWeight: FontWeight.w500),
+                  ),
+                  sh5,
+                  Text(
+                    '\$1000',
+                    style: h1,
+                  ),
+                  sh24,
+                  CustomButton(
+                    text: 'Withdraw',
+                    onPressed: () {
+                       Get.to(()=> WithdrawSuccessfulView());
+                    },
+                    backgroundColor: AppColors.deepBlue,
+                    textStyle: h3.copyWith(
+                        fontWeight: FontWeight.w500, color: AppColors.white),
+                  ),
+                ],
+              ),
+            ),
+            sh16,
+            Text(
+              'Recent Transactions',
+              style: h3.copyWith(fontWeight: FontWeight.w500),
+            ),
+            sh16,
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
+                ),
+                color: AppColors.deepBlue,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '#Sl',
+                    style: h6.copyWith(
+                      color: AppColors.white,
+                    ),
+                  ),
+                  Text(
+                    'Full Name',
+                    style: h6.copyWith(
+                      color: AppColors.white,
+                    ),
+                  ),
+                  Text(
+                    'Acc Number',
+                    style: h6.copyWith(
+                      color: AppColors.white,
+                    ),
+                  ),
+                  Text(
+                    'Date',
+                    style: h6.copyWith(
+                      color: AppColors.white,
+                    ),
+                  ),
+                  Text(
+                    'Amount',
+                    style: h6.copyWith(
+                      color: AppColors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(12),
+                    bottomRight: Radius.circular(12),
+                  ),
+                  color: AppColors.white,
+                ),
+                child: ListView.builder(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  itemCount: dummyData.length,
+                  itemBuilder: (context, index) {
+                    final data = dummyData[index];
+                    return ListTile(
+                      onTap: (){
+                        Get.to(()=> VendorEarningDetailsView());
+                      },
+                      contentPadding: EdgeInsets.zero,
+                      leading: Text(
+                        data['id'] ?? 'N/A',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 10),
+                      ),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            data['fullName'] ?? 'No Name',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 10,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text(
+                            data['accNumber'] ?? 'No account',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 10,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text(
+                            data['date'] ?? 'No Date',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 10,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
+                      trailing: SizedBox(
+                        width: 40,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                data['amount'] ?? '\$0',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 10,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            Image.asset(
+                              AppImages.arrowRight,
+                              scale: 4,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

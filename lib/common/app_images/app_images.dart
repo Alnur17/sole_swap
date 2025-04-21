@@ -6,6 +6,7 @@ class AppImages {
   static const arrowBack = "assets/icons/arrow back.png";
   static const arrowRight = "assets/icons/arrow right.png";
   static const arrowDown = "assets/icons/arrow down.png";
+  static const wallet = "assets/icons/wallet.png";
   static const home = "assets/icons/home.png";
   static const homeFilled = "assets/icons/home filled.png";
   static const vendor = "assets/icons/vendor.png";
@@ -64,6 +65,7 @@ class AppImages {
   static const inProgress = "assets/icons/in progress.png";
   static const shipped = "assets/icons/shipped.png";
   static const trackOrder = "assets/icons/track order.png";
+  static const withdrawSuccess = "assets/icons/withdraw success.png";
 
   //================ Images ==================>
   static const onboardingOne = "assets/images/onboarding 1.png";

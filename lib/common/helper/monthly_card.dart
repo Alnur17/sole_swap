@@ -10,6 +10,7 @@ class MonthlyCard extends StatelessWidget {
   final String value;
   final String percentageChange;
   final String selectedMonth;
+  final ValueChanged<String?> onMonthChanged;
 
   const MonthlyCard({
     super.key,
@@ -17,6 +18,7 @@ class MonthlyCard extends StatelessWidget {
     required this.value,
     required this.percentageChange,
     required this.selectedMonth,
+    required this.onMonthChanged,
   });
 
   @override
@@ -55,10 +57,7 @@ class MonthlyCard extends StatelessWidget {
                       ),
                     );
                   }).toList(),
-                  onChanged: (newValue) {
-                    // Handle dropdown value change here if needed
-                    print('Selected month: $newValue');
-                  },
+                  onChanged: onMonthChanged,
                   width: 70,
                   // Adjusted width for better fit
                   height: 36, // Adjusted height for better fit
