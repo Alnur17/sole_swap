@@ -3,19 +3,20 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sole_swap/app/controllers/theme_controller.dart';
 import 'package:sole_swap/app/modules/user/home/views/new_sneakers_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/product_details_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/search_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/trending_sneakers_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/widgets/promo_banner.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
+import 'package:sole_swap/common/app_text_style/styles.dart';
 import 'package:sole_swap/common/helper/new_shoe_card.dart';
 import 'package:sole_swap/common/helper/recommended_shoe_card.dart';
 import 'package:sole_swap/common/helper/trending_shoe_card.dart';
 import 'package:sole_swap/common/size_box/custom_sizebox.dart';
 import 'package:sole_swap/common/widgets/custom_row_header.dart';
 import '../../../../../common/app_images/app_images.dart';
-import '../../../../../common/app_text_style/styles.dart';
 import '../../cart/views/cart_view.dart';
 import '../controllers/home_controller.dart';
 
@@ -28,6 +29,8 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final controller = Get.put(HomeController());
+
+  final ThemeController themeController = Get.find();
 
   final List<Widget> promoBanners = [
     PromoBanner(
@@ -62,9 +65,9 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value ? Colors.black87 : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.mainColor,
+        backgroundColor: themeController.isDarkMode.value ? AppColors.transparent : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Row(
           children: [
@@ -79,11 +82,11 @@ class _HomeViewState extends State<HomeView> {
               children: [
                 Text(
                   'Hello 👋🏻',
-                  style: h6,
+                  style: themeController.isDarkMode.value ? h6.copyWith(color: AppColors.white) : h6,
                 ),
                 Text(
                   'Saiid Romea',
-                  style: h5.copyWith(fontWeight: FontWeight.w500),
+                  style: themeController.isDarkMode.value ? h5.copyWith(color: AppColors.white,fontWeight: FontWeight.w500) : h5.copyWith(fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -101,6 +104,7 @@ class _HomeViewState extends State<HomeView> {
               child: Image.asset(
                 AppImages.notification,
                 scale: 4,
+                color: themeController.isDarkMode.value ? Colors.white : AppColors.black,
               ),
             ),
           ),
@@ -118,6 +122,7 @@ class _HomeViewState extends State<HomeView> {
               child: Image.asset(
                 AppImages.shop,
                 scale: 4,
+                color: themeController.isDarkMode.value ? Colors.white : AppColors.black,
               ),
             ),
           ),
@@ -141,14 +146,15 @@ class _HomeViewState extends State<HomeView> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: AppColors.white,
-                  border: Border.all(color: AppColors.silver),
+                    color: themeController.isDarkMode.value ? Colors.black : AppColors.white,
+                  //border: Border.all(color: AppColors.silver),
                 ),
                 child: Row(
                   children: [
                     Image.asset(
                       AppImages.search,
                       scale: 4,
+                     color:  themeController.isDarkMode.value ? Colors.white : AppColors.black,
                     ),
                     sw12,
                     Text(
@@ -162,7 +168,7 @@ class _HomeViewState extends State<HomeView> {
             sh16,
             CarouselSlider(
               options: CarouselOptions(
-                height: 170,
+                height: 175,
                 autoPlay: true,
                 enlargeCenterPage: false,
                 onPageChanged: (index, reason) {
@@ -179,10 +185,10 @@ class _HomeViewState extends State<HomeView> {
                     initialPage: controller.currentIndex.value,
                   ),
                   count: promoBanners.length,
-                  effect: const WormEffect(
+                  effect: WormEffect(
                     dotHeight: 8,
                     dotWidth: 8,
-                    activeDotColor: Colors.black,
+                    activeDotColor: themeController.isDarkMode.value ? Colors.white : Colors.black,
                     dotColor: Colors.grey,
                   ),
                 ),
@@ -193,7 +199,7 @@ class _HomeViewState extends State<HomeView> {
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 'Recommended For you',
-                style: h3,
+                style: themeController.isDarkMode.value ? h3.copyWith(color: AppColors.white) : h3,
               ),
             ),
             sh8,

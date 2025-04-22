@@ -13,6 +13,7 @@ import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 import '../../../authentication/sign_in/views/sign_in_view.dart';
 import '../controllers/vendor_profile_controller.dart';
 
@@ -20,6 +21,7 @@ class VendorProfileView extends GetView<VendorProfileController> {
   const VendorProfileView({super.key});
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
       backgroundColor: AppColors.mainColor,
       appBar: AppBar(
@@ -76,6 +78,32 @@ class VendorProfileView extends GetView<VendorProfileController> {
                 style: h2,
               ),
               sh24,
+              ListTile(
+                leading: Icon(
+                  Icons.format_paint_outlined,
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
+                ),
+                title: Text(
+                  'Dark Mode',
+                  style: h4.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                ),
+                trailing: Obx(
+                      () => Switch(
+                    value: themeController.isDarkMode.value,
+                    onChanged: (value) {
+                      themeController.toggleTheme();
+                    },
+                    activeColor: AppColors.white,
+                    activeTrackColor: AppColors.blue,
+                  ),
+                ),
+              ),
               ListTile(
                 onTap: () {
                   Get.to(() => VendorEditProfileView());

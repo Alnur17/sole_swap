@@ -83,7 +83,6 @@ class AuthDashboardView extends GetView<AuthDashboardController> {
                     color: AppColors.black,
                     fontWeight: FontWeight.w700,
                   ),
-                  borderColor: AppColors.black,
                 ),
                 sh12,
                 GestureDetector(

@@ -4,6 +4,7 @@ import 'package:sole_swap/common/app_color/app_colors.dart';
 import 'package:sole_swap/common/size_box/custom_sizebox.dart';
 import 'package:sole_swap/common/widgets/custom_button.dart';
 
+import '../../app/controllers/theme_controller.dart';
 import '../app_text_style/styles.dart';
 
 class FavoriteCard extends StatelessWidget {
@@ -22,12 +23,15 @@ class FavoriteCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return GestureDetector(
       onTap: onTap,
       child: Container(
         width: 150,
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: themeController.isDarkMode.value
+              ? AppColors.black
+              : AppColors.white,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
@@ -46,7 +50,9 @@ class FavoriteCard extends StatelessWidget {
               margin: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: AppColors.promoBgColor, // Light gray background
+                color: themeController.isDarkMode.value
+                    ? Colors.white12
+                    : AppColors.promoBgColor,
               ),
               child: Image.asset(
                 imagePath,
@@ -60,7 +66,11 @@ class FavoriteCard extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: h4,
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -68,7 +78,11 @@ class FavoriteCard extends StatelessWidget {
                     children: [
                       Text(
                         price,
-                        style: h2,
+                        style: h2.copyWith(
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                       sw5,
                       Expanded(

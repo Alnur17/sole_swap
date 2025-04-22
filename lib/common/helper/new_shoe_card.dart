@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../../../../../common/app_color/app_colors.dart';
 import '../../../../../../common/app_text_style/styles.dart';
 import '../../../../../../common/size_box/custom_sizebox.dart';
+import '../../app/controllers/theme_controller.dart';
 
 class NewShoeCard extends StatelessWidget {
   final String title;
@@ -22,6 +23,7 @@ class NewShoeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -29,8 +31,10 @@ class NewShoeCard extends StatelessWidget {
         width: Get.width * 0.8,
         //margin: const EdgeInsets.symmetric(horizontal: 6),
         decoration: BoxDecoration(
-          color: AppColors.white,
-          border: Border.all(color: AppColors.silver),
+          color: themeController.isDarkMode.value
+              ? AppColors.black
+              : AppColors.white,
+          //border: Border.all(color: AppColors.silver),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Stack(
@@ -58,20 +62,26 @@ class NewShoeCard extends StatelessWidget {
                     title,
                     style: h6.copyWith(
                         color: AppColors.textColorOrange,
-                        fontWeight: FontWeight.w700
-                    ),
+                        fontWeight: FontWeight.w700),
                   ),
                   sh5,
                   Text(
                     productName,
-                    style: h3.copyWith(fontSize: 20,),
+                    style: themeController.isDarkMode.value
+                        ? h3.copyWith(
+                            color: AppColors.white,
+                            fontSize: 20,
+                          )
+                        : h3.copyWith(fontSize: 20),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   sh5,
                   Text(
                     price,
-                    style: h3,
+                    style: themeController.isDarkMode.value
+                        ? h3.copyWith(color: AppColors.white)
+                        : h3,
                   ),
                 ],
               ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../app/controllers/theme_controller.dart';
 import '../app_color/app_colors.dart';
 import '../app_text_style/styles.dart';
 
@@ -30,6 +32,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return GestureDetector(
       onTap: onPressed,
       child: Container(
@@ -38,7 +41,11 @@ class CustomButton extends StatelessWidget {
         padding: const EdgeInsets.only(left: 12, right: 12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius!),
-          border: Border.all(color: borderColor ?? AppColors.transparent),
+          border: Border.all(
+            color: themeController.isDarkMode.value
+                ? AppColors.silver
+                : AppColors.transparent,
+          ),
           color: backgroundColor ?? AppColors.black,
         ),
         child: Center(
@@ -56,10 +63,11 @@ class CustomButton extends StatelessWidget {
               ],
               Text(
                 text,
-                style: textStyle ?? h3.copyWith(
-                  fontWeight: FontWeight.w700,
-                  color: textColor ?? AppColors.white,
-                ),
+                style: textStyle ??
+                    h3.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: textColor ?? AppColors.white,
+                    ),
               ),
             ],
           ),

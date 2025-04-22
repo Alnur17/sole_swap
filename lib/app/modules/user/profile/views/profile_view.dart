@@ -13,218 +13,380 @@ import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
-import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 import '../../../authentication/sign_in/views/sign_in_view.dart';
 import '../controllers/profile_controller.dart';
 import 'edit_profile_view.dart';
 import 'notifications_view.dart';
 
-class ProfileView extends GetView<ProfileController> {
+class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
 
   @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  final ProfileController controller = Get.put(ProfileController());
+  final ThemeController themeController = Get.find();
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.mainColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        scrolledUnderElevation: 0,
-        title: Text(
-          'Profile',
-          style: titleStyle,
-        ),
-        centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16),
-          child: CustomCircularContainer(
-            imagePath: AppImages.arrowBack,
-            onTap: () {
-              Get.back();
-            },
-            padding: 4,
+    return Obx(
+      () => Scaffold(
+        backgroundColor: themeController.isDarkMode.value
+            ? Colors.black87
+            : AppColors.background,
+        appBar: AppBar(
+          backgroundColor: themeController.isDarkMode.value
+              ? AppColors.transparent
+              : AppColors.background,
+          scrolledUnderElevation: 0,
+          title: Text(
+            'Profile',
+            style: titleStyle.copyWith(
+              color: themeController.isDarkMode.value
+                  ? AppColors.white
+                  : AppColors.black,
+            ),
           ),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              sh24,
-              Stack(
-                children: [
-                  CircleAvatar(
-                    radius: 55,
-                    backgroundImage: AssetImage(AppImages.profile),
-                  ),
-                  Positioned(
-                    right: 0,
-                    bottom: 0,
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: ShapeDecoration(
-                        shape: CircleBorder(),
-                        color: AppColors.whiteDark,
-                      ),
-                      child: Image.asset(
-                        AppImages.edit,
-                        scale: 4,
+        body: Padding(
+          padding: const EdgeInsets.only(left: 16, right: 16),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                sh24,
+                Stack(
+                  children: [
+                    CircleAvatar(
+                      radius: 55,
+                      backgroundImage: AssetImage(AppImages.profile),
+                    ),
+                    Positioned(
+                      right: 0,
+                      bottom: 0,
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: ShapeDecoration(
+                          shape: CircleBorder(),
+                          color: AppColors.whiteDark,
+                        ),
+                        child: Image.asset(
+                          AppImages.edit,
+                          scale: 4,
+                        ),
                       ),
                     ),
+                  ],
+                ),
+                sh16,
+                Text(
+                  'Saiid Romeo',
+                  style: h2.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
                   ),
-                ],
-              ),
-              sh16,
-              Text(
-                'Saiid Romeo',
-                style: h2,
-              ),
-              sh24,
-              ListTile(
-                onTap: () {
-                  Get.to(() => EditProfileView());
-                },
-                leading: Image.asset(
-                  AppImages.person,
-                  scale: 4,
                 ),
-                title: Text('Edit Profile'),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
+                sh24,
+                ListTile(
+                  leading: Icon(
+                    Icons.format_paint_outlined,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  title: Text(
+                    'Dark Mode',
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
+                  trailing: Obx(
+                    () => Switch(
+                      value: themeController.isDarkMode.value,
+                      onChanged: (value) {
+                        themeController.toggleTheme();
+                      },
+                      activeColor: AppColors.white,
+                      activeTrackColor: AppColors.blue,
+                    ),
+                  ),
                 ),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.to(() => SettingsView());
-                },
-                leading: Image.asset(
-                  AppImages.settings,
-                  scale: 4,
+                ListTile(
+                  onTap: () {
+                    Get.to(() => EditProfileView());
+                  },
+                  leading: Image.asset(
+                    AppImages.person,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  title: Text(
+                    'Edit Profile',
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
+                  trailing: Image.asset(
+                    AppImages.arrowRight,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
-                title: Text('Settings'),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
+                ListTile(
+                  onTap: () {
+                    Get.to(() => SettingsView());
+                  },
+                  leading: Image.asset(
+                    AppImages.settings,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  title: Text(
+                    'Settings',
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
+                  trailing: Image.asset(
+                    AppImages.arrowRight,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.to(() => DeliveryAddressView());
-                },
-                leading: Image.asset(
-                  AppImages.locationOutline,
-                  scale: 4,
+                ListTile(
+                  onTap: () {
+                    Get.to(() => DeliveryAddressView());
+                  },
+                  leading: Image.asset(
+                    AppImages.locationOutline,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  title: Text(
+                    'Delivery Address',
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
+                  trailing: Image.asset(
+                    AppImages.arrowRight,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
-                title: Text('Delivery Address'),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
+                ListTile(
+                  onTap: () {
+                    Get.to(() => OrdersView());
+                  },
+                  leading: Image.asset(
+                    AppImages.order,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  title: Text(
+                    'Orders',
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
+                  trailing: Image.asset(
+                    AppImages.arrowRight,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.to(() => OrdersView());
-                },
-                leading: Image.asset(
-                  AppImages.order,
-                  scale: 4,
+                ListTile(
+                  onTap: () {
+                    Get.to(() => ReturnView());
+                  },
+                  leading: Image.asset(
+                    AppImages.returns,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  title: Text(
+                    'Return',
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
+                  trailing: Image.asset(
+                    AppImages.arrowRight,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
-                title: Text('Orders'),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
+                ListTile(
+                  onTap: () {
+                    Get.to(() => NotificationsView());
+                  },
+                  leading: Image.asset(
+                    AppImages.notifications,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  title: Text(
+                    'Notifications',
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
+                  trailing: Image.asset(
+                    AppImages.arrowRight,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.to(() => ReturnView());
-                },
-                leading: Image.asset(
-                  AppImages.returns,
-                  scale: 4,
+                ListTile(
+                  onTap: () {
+                    Get.to(() => AboutUsView());
+                  },
+                  leading: Image.asset(
+                    AppImages.aboutUs,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  title: Text(
+                    'About Us',
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
+                  trailing: Image.asset(
+                    AppImages.arrowRight,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
-                title: Text('Return'),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
+                ListTile(
+                  onTap: () {
+                    Get.to(() => PrivacyPolicyView());
+                  },
+                  leading: Image.asset(
+                    AppImages.privacy,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  title: Text(
+                    'Privacy Policy',
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
+                  trailing: Image.asset(
+                    AppImages.arrowRight,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.to(() => NotificationsView());
-                },
-                leading: Image.asset(
-                  AppImages.notifications,
-                  scale: 4,
+                ListTile(
+                  onTap: () {
+                    Get.to(() => TermsOfServicesView());
+                  },
+                  leading: Image.asset(
+                    AppImages.termsOfServices,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  title: Text(
+                    'Terms of Services',
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
+                  trailing: Image.asset(
+                    AppImages.arrowRight,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
-                title: Text('Notifications'),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
+                ListTile(
+                  onTap: () {
+                    _showLogoutPopup();
+                  },
+                  leading: Image.asset(
+                    AppImages.logout,
+                    scale: 4,
+                    // color: themeController.isDarkMode.value
+                    //     ? AppColors.white
+                    //     : AppColors.black,
+                  ),
+                  title: Text(
+                    'Sign Out',
+                    style: TextStyle(color: AppColors.darkRed),
+                  ),
+                  trailing: Image.asset(
+                    AppImages.arrowRight,
+                    scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.to(() => AboutUsView());
-                },
-                leading: Image.asset(
-                  AppImages.aboutUs,
-                  scale: 4,
-                ),
-                title: Text('About Us'),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
-                ),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.to(() => PrivacyPolicyView());
-                },
-                leading: Image.asset(
-                  AppImages.privacy,
-                  scale: 4,
-                ),
-                title: Text('Privacy Policy'),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
-                ),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.to(() => TermsOfServicesView());
-                },
-                leading: Image.asset(
-                  AppImages.termsOfServices,
-                  scale: 4,
-                ),
-                title: Text('Terms of Services'),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
-                ),
-              ),
-              ListTile(
-                onTap: () {
-                  _showLogoutPopup();
-                },
-                leading: Image.asset(
-                  AppImages.logout,
-                  scale: 4,
-                ),
-                title: Text(
-                  'Sign Out',
-                  style: TextStyle(color: AppColors.darkRed),
-                ),
-                trailing: Image.asset(
-                  AppImages.arrowRight,
-                  scale: 4,
-                ),
-              ),
-              sh24
-            ],
+                sh24
+              ],
+            ),
           ),
         ),
       ),
@@ -283,5 +445,4 @@ class ProfileView extends GetView<ProfileController> {
       ),
     );
   }
-
 }

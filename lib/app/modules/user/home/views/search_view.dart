@@ -5,7 +5,9 @@ import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
+import '../../../../../common/widgets/custom_circular_container.dart';
 import '../../../../../common/widgets/search_filed.dart';
+import '../../../../controllers/theme_controller.dart';
 import '../controllers/home_controller.dart';
 
 class SearchView extends StatefulWidget {
@@ -17,26 +19,36 @@ class SearchView extends StatefulWidget {
 
 class _SearchViewState extends State<SearchView> {
   final HomeController homeController = Get.find<HomeController>();
+  final ThemeController themeController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.white,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.background,
         scrolledUnderElevation: 0,
         title: Text(
           'Search',
-          style: titleStyle,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
-        leading: GestureDetector(
-          onTap: () {
-            Get.back();
-          },
-          child: Image.asset(
-            AppImages.arrowBack,
-            scale: 4,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: CustomCircularContainer(
+            imagePath: AppImages.arrowBack,
+            onTap: () {
+              Get.back();
+            },
+            padding: 4,
           ),
         ),
       ),

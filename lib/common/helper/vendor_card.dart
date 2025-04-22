@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../app/controllers/theme_controller.dart';
 import '../app_color/app_colors.dart';
 import '../app_images/app_images.dart';
 import '../app_text_style/styles.dart';
@@ -25,10 +27,13 @@ class VendorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        color: AppColors.white,
+        color: themeController.isDarkMode.value
+            ? AppColors.black
+            : AppColors.white,
         elevation: 2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: Column(
@@ -56,7 +61,11 @@ class VendorCard extends StatelessWidget {
                     children: [
                       Text(
                         name,
-                        style: h3,
+                        style: h3.copyWith(
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(
@@ -93,7 +102,11 @@ class VendorCard extends StatelessWidget {
                       sw5,
                       Text(
                         location,
-                        style: h6,
+                        style: h6.copyWith(
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                     ],
                   ),

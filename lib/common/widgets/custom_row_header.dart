@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
 
+import '../../app/controllers/theme_controller.dart';
 import '../app_text_style/styles.dart';
 
 class CustomRowHeader extends StatelessWidget {
@@ -17,12 +19,13 @@ class CustomRowHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           title,
-          style: h3,
+          style:  themeController.isDarkMode.value ? h3.copyWith(color: AppColors.white) : h3,
         ),
         GestureDetector(
           onTap: onTap,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 import 'package:get/get.dart';
+import 'package:sole_swap/app/controllers/theme_controller.dart';
 import 'package:sole_swap/app/modules/vendor/vendor_profile/views/vendor_notifications.dart';
 import 'package:sole_swap/common/app_images/app_images.dart';
 import 'package:sole_swap/common/helper/monthly_card.dart';
@@ -17,11 +18,12 @@ class VendorHomeView extends GetView<VendorHomeController> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     var selectedValue = '2025'.obs;
     var selectedMonth = 'Mar'.obs;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: themeController.isDarkMode.value ? Colors.black87 : AppColors.background ,
         appBar: AppBar(
           scrolledUnderElevation: 0,
           backgroundColor: AppColors.background,

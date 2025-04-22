@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
 import 'package:sole_swap/common/app_images/app_images.dart';
 
+import '../../app/controllers/theme_controller.dart';
 import '../app_text_style/styles.dart';
+import '../size_box/custom_sizebox.dart';
 
 class RecommendedShoeCard extends StatelessWidget {
   final String imagePath;
@@ -18,11 +21,19 @@ class RecommendedShoeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Container(
       width: 150,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: themeController.isDarkMode.value
+            ? AppColors.black
+            : AppColors.white,
         borderRadius: BorderRadius.circular(12),
+        // border: Border.all(
+        //   color: themeController.isDarkMode.value
+        //       ? AppColors.white
+        //       : AppColors.transparent,
+        // ),
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
@@ -33,16 +44,17 @@ class RecommendedShoeCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // Plus Icon at the top right
           Positioned(
             top: 8,
             right: 8,
             child: Image.asset(
               AppImages.addBookmark,
               scale: 4,
+              color: themeController.isDarkMode.value
+                  ? Colors.white
+                  : Colors.black,
             ),
           ),
-
           Positioned(
             bottom: 0,
             right: 0,
@@ -53,15 +65,18 @@ class RecommendedShoeCard extends StatelessWidget {
                   topLeft: Radius.circular(12),
                   bottomRight: Radius.circular(12),
                 ),
-                color: Colors.black,
+                color: themeController.isDarkMode.value
+                    ? Colors.white
+                    : Colors.black,
               ),
               child: Icon(
                 Icons.add,
-                color: Colors.white,
+                color: themeController.isDarkMode.value
+                    ? Colors.black
+                    : Colors.white,
               ),
             ),
           ),
-
           Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
@@ -82,19 +97,23 @@ class RecommendedShoeCard extends StatelessWidget {
                       color: AppColors.textColorOrange,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  sh5,
                   // Shoe Name
                   Text(
                     name,
-                    style: h3,
+                    style: themeController.isDarkMode.value
+                        ? h3.copyWith(color: AppColors.white)
+                        : h3,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 4),
+                  sh5,
                   // Price
                   Text(
                     price,
-                    style: h3.copyWith(fontSize: 14),
+                    style: themeController.isDarkMode.value
+                        ? h3.copyWith(color: AppColors.white, fontSize: 14)
+                        : h3.copyWith(fontSize: 14),
                   ),
                 ],
               ),

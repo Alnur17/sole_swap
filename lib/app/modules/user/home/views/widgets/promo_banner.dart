@@ -4,6 +4,7 @@ import '../../../../../../common/app_color/app_colors.dart';
 import '../../../../../../common/app_text_style/styles.dart';
 import '../../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../../common/widgets/custom_button.dart';
+import '../../../../../controllers/theme_controller.dart';
 import '../../controllers/home_controller.dart';
 
 class PromoBanner extends StatelessWidget {
@@ -28,11 +29,18 @@ class PromoBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 6),
       decoration: BoxDecoration(
-        color: AppColors.promoBgColor,
+        color: themeController.isDarkMode.value
+            ? Colors.black
+            : AppColors.promoBgColor,
         borderRadius: BorderRadius.circular(16),
+        // border: Border.all(
+        //   color:
+        //       themeController.isDarkMode.value ? Colors.white : AppColors.transparent,
+        // ),
       ),
       child: Stack(
         children: [
@@ -56,25 +64,25 @@ class PromoBanner extends StatelessWidget {
               children: [
                 Text(
                   title, // Dynamic title
-                  style: h5,
+                  style: themeController.isDarkMode.value ? h5.copyWith(color: AppColors.white) :h5,
                 ),
                 sh8,
                 Row(
                   children: [
                     Text(
                       discountPercentage, // Dynamic percentage
-                      style: h2,
+                      style: themeController.isDarkMode.value ? h2.copyWith(color: AppColors.white) :h2,
                     ),
                     sw8,
                     Text(
                       discountText, // Dynamic discount text
-                      style: h3,
+                      style: themeController.isDarkMode.value ? h3.copyWith(color: AppColors.white) :h3,
                     ),
                   ],
                 ),
                 Text(
                   subText,
-                  style: h5,
+                  style: themeController.isDarkMode.value ? h5.copyWith(color: AppColors.white) : h5,
                 ),
                 const SizedBox(height: 16),
                 CustomButton(
@@ -82,10 +90,11 @@ class PromoBanner extends StatelessWidget {
                   height: 40,
                   borderRadius: 30,
                   text: buttonText,
-                  onPressed: onPressed ?? () {
-                    // Default action if no callback is provided
-                    Get.find<HomeController>().onRentNowPressed();
-                  },
+                  borderColor: themeController.isDarkMode.value ? AppColors.white: AppColors.transparent,
+                  onPressed: onPressed ??
+                      () {
+                        Get.find<HomeController>().onRentNowPressed();
+                      },
                 ),
               ],
             ),

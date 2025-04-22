@@ -10,6 +10,7 @@ import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/helper/vendor_card.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 import '../controllers/vendor_controller.dart';
 
 class VendorView extends GetView<VendorController> {
@@ -17,14 +18,23 @@ class VendorView extends GetView<VendorController> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.black87
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.transparent,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.background,
         scrolledUnderElevation: 0,
         title: Text(
           'Vendor',
-          style: titleStyle,
+          style: themeController.isDarkMode.value
+              ? titleStyle.copyWith(
+                  color: AppColors.white,
+                )
+              : titleStyle,
         ),
         centerTitle: true,
         leading: Padding(
@@ -53,9 +63,15 @@ class VendorView extends GetView<VendorController> {
             SearchFiled(
               onChanged: (value) {},
             ),
+            sh16,
             Text(
               'Find Nearby Vendors',
-              style: h3.copyWith(fontSize: 18),
+              style: h3.copyWith(
+                fontSize: 18,
+                color: themeController.isDarkMode.value
+                    ? AppColors.white
+                    : AppColors.black,
+              ),
             ),
             sh5,
 
@@ -74,8 +90,8 @@ class VendorView extends GetView<VendorController> {
                     location: 'Downtown Fresno • 2.3 mi',
                     isOpen: true,
                     imageUrl: AppImages.storeImage,
-                    onTap: (){
-                      Get.to(()=> VendorDetailsView());
+                    onTap: () {
+                      Get.to(() => VendorDetailsView());
                     },
                   );
                 },
