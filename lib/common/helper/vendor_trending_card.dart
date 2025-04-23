@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
 import 'package:sole_swap/common/app_images/app_images.dart';
 
+import '../../app/controllers/theme_controller.dart';
 import '../app_text_style/styles.dart';
 
 class VendorTrendingCard extends StatelessWidget {
@@ -23,12 +24,15 @@ class VendorTrendingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return GestureDetector(
       onTap: onTap,
       child: Container(
         width: 150,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: themeController.isDarkMode.value
+              ? AppColors.black
+              : AppColors.white,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
@@ -48,8 +52,11 @@ class VendorTrendingCard extends StatelessWidget {
                   width: Get.width,
                   margin: EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: AppColors.promoBgColor),
+                    borderRadius: BorderRadius.circular(8),
+                    color: themeController.isDarkMode.value
+                        ? Colors.white12
+                        : AppColors.promoBgColor,
+                  ),
                   child: Image.asset(
                     imagePath,
                     scale: 4,
@@ -86,14 +93,23 @@ class VendorTrendingCard extends StatelessWidget {
                   Expanded(
                     child: Text(
                       name,
-                      style: h4,
+                      style: h4.copyWith(
+                        color: themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Text(
                     '\$$price',
-                    style: h3.copyWith(fontSize: 18),
+                    style: h3.copyWith(
+                      fontSize: 18,
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                 ],
               ),

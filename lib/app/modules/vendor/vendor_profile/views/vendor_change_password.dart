@@ -9,17 +9,23 @@ import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_button.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
 import '../../../../../common/widgets/custom_textfield.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class VendorChangePassword extends GetView {
   const VendorChangePassword({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
-        backgroundColor: AppColors.background,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: CustomCircularContainer(
@@ -32,12 +38,16 @@ class VendorChangePassword extends GetView {
         ),
         title: Text(
           'Change Password',
-          style: appBarStyle,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
           children: [
             sh30,

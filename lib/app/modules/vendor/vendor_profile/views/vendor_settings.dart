@@ -9,16 +9,21 @@ import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
 import '../../../../../common/widgets/custom_list_tile_with_color.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class VendorSettings extends GetView {
   const VendorSettings({super.key});
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
-        scrolledUnderElevation: 0,
-        backgroundColor: AppColors.background,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: CustomCircularContainer(
@@ -31,7 +36,11 @@ class VendorSettings extends GetView {
         ),
         title: Text(
           'Settings',
-          style: appBarStyle,
+          style: appBarStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
       ),
@@ -39,6 +48,7 @@ class VendorSettings extends GetView {
         padding: const EdgeInsets.only(left: 16, right: 16),
         child: Column(
           children: [
+            sh20,
             CustomListTileWithColor(
               leadingIconPath: AppImages.settings,
               trailingIconPath: AppImages.arrowRight,
@@ -61,10 +71,11 @@ class VendorSettings extends GetView {
     );
   }
 
-  Future showDeleteAccountDialog(BuildContext context) {
+  Future showDeleteAccountDialog(BuildContext context,) {
     return Get.defaultDialog(
       contentPadding: EdgeInsets.symmetric(horizontal: 12),
       title: "Delete Your Account",
+      titleStyle: h2,
       //titlePadding: EdgeInsets.only(top: 12),
       backgroundColor: AppColors.white,
       radius: 8,

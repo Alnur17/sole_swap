@@ -10,17 +10,23 @@ import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_button.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
 import '../../../../../common/widgets/custom_textfield.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class VendorEditProfileView extends GetView {
   const VendorEditProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
-        backgroundColor: AppColors.background,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: CustomCircularContainer(
@@ -33,7 +39,11 @@ class VendorEditProfileView extends GetView {
         ),
         title: Text(
           'Edit Profile',
-          style: appBarStyle,
+          style: appBarStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
       ),

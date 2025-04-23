@@ -86,10 +86,14 @@ class TrendingShoeCard extends StatelessWidget {
                         Icons.star,
                         color: AppColors.textColorOrange,
                       ),
-                      Text('4.5',
-                          style: themeController.isDarkMode.value
-                              ? h6.copyWith(color: AppColors.white)
-                              : h6),
+                      Text(
+                        '4.5',
+                        style: h6.copyWith(
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
+                      ),
                     ],
                   ),
                 ),

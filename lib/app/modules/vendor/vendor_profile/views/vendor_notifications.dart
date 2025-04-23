@@ -7,17 +7,23 @@ import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class VendorNotifications extends GetView {
   const VendorNotifications({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
-        backgroundColor: AppColors.background,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: CustomCircularContainer(
@@ -29,8 +35,12 @@ class VendorNotifications extends GetView {
           ),
         ),
         title: Text(
-          'Details',
-          style: appBarStyle,
+          'Notifications',
+          style: appBarStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
         actions: [
@@ -59,9 +69,11 @@ class VendorNotifications extends GetView {
                       Container(
                         height: 12,
                         width: 12,
-                        decoration: const ShapeDecoration(
-                          shape: CircleBorder(),
-                          color: AppColors.black,
+                        decoration: ShapeDecoration(
+                          shape: const CircleBorder(),
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
                         ),
                       ),
                       sw12,
@@ -83,7 +95,11 @@ class VendorNotifications extends GetView {
                           children: [
                             Text(
                               'Welcome to notifications page',
-                              style: h4,
+                              style: h4.copyWith(
+                                color: themeController.isDarkMode.value
+                                    ? AppColors.white
+                                    : AppColors.black,
+                              ),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                             ),

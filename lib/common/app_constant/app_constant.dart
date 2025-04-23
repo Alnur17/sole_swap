@@ -1,5 +1,6 @@
 class AppConstant {
 
+  static const theme = 'theme';
 
   static const token = 'token';
   static const refCode = 'refCode';

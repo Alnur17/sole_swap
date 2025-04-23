@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sole_swap/app/controllers/theme_controller.dart';
 import 'package:sole_swap/app/modules/onboarding/views/widgets/onboardingwidget.dart';
 
 import '../../../../common/app_color/app_colors.dart';
@@ -16,12 +17,15 @@ class OnboardingView extends StatefulWidget {
 }
 
 class _OnboardingViewState extends State<OnboardingView> {
+  final ThemeController themeController = Get.find();
   final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.black87
+          : AppColors.splashBackColor,
       body: Stack(
         children: [
           PageView(
@@ -66,7 +70,9 @@ class _OnboardingViewState extends State<OnboardingView> {
                     dotWidth: 12.0,
                     spacing: 16.0,
                     dotColor: Colors.grey,
-                    activeDotColor: Colors.black,
+                    activeDotColor: themeController.isDarkMode.value
+                        ? Colors.white
+                        :Colors.black,
                   ),
                 ),
               ],

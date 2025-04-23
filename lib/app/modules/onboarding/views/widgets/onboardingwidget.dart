@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class OnboardingPage extends StatelessWidget {
   final String image;
@@ -24,6 +25,7 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return SafeArea(
       child: Stack(
         children: [
@@ -46,13 +48,19 @@ class OnboardingPage extends StatelessWidget {
                 RichText(
                   text: TextSpan(
                     style: h1,
-                    children: _buildHighlightedText(),
+                    children: _buildHighlightedText(themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,),
                   ),
                 ),
                 sh16,
                 Text(
                   subtitle,
-                  style: h4,
+                  style: h4.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
                 sh100,
               ],
@@ -63,7 +71,7 @@ class OnboardingPage extends StatelessWidget {
     );
   }
 
-  List<TextSpan> _buildHighlightedText() {
+  List<TextSpan> _buildHighlightedText( Color themeColor) {
     List<TextSpan> spans = [];
     final words = title.split(' ');
 
@@ -76,7 +84,7 @@ class OnboardingPage extends StatelessWidget {
       } else {
         spans.add(TextSpan(
           text: '$word ',
-          style: TextStyle(color: AppColors.black),
+          style: TextStyle(color: themeColor),
         ));
       }
     }

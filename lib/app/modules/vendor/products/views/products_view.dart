@@ -8,7 +8,7 @@ import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_button.dart';
-import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class ProductsView extends StatefulWidget {
   const ProductsView({super.key});
@@ -19,29 +19,29 @@ class ProductsView extends StatefulWidget {
 
 class _ProductsViewState extends State<ProductsView> {
   final ProductsController productsController = Get.put(ProductsController());
+  final ThemeController themeController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.black87
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.transparent,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Text(
           'Products',
-          style: titleStyle,
-        ),
-        centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16),
-          child: CustomCircularContainer(
-            imagePath: AppImages.arrowBack,
-            onTap: () {
-              Get.back();
-            },
-            padding: 4,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
           ),
         ),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

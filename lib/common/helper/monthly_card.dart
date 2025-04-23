@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
 import 'package:sole_swap/common/app_images/app_images.dart';
+import 'package:sole_swap/common/size_box/custom_sizebox.dart';
 
+import '../../app/controllers/theme_controller.dart';
 import '../app_text_style/styles.dart';
 import '../widgets/custom_dropdown.dart';
 
@@ -23,8 +26,10 @@ class MonthlyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Card(
-      color: AppColors.white,
+      color:
+          themeController.isDarkMode.value ? AppColors.black : AppColors.white,
       elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
@@ -40,7 +45,11 @@ class MonthlyCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     title,
-                    style: h6,
+                    style: h6.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                 ),
                 CustomDropdown<String>(
@@ -59,17 +68,17 @@ class MonthlyCard extends StatelessWidget {
                   }).toList(),
                   onChanged: onMonthChanged,
                   width: 70,
-                  // Adjusted width for better fit
-                  height: 36, // Adjusted height for better fit
+                  height: 36,
                 ),
               ],
             ),
             SizedBox(height: 8),
             Text(
               value,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+              style: h2.copyWith(
+                color: themeController.isDarkMode.value
+                    ? AppColors.white
+                    : AppColors.black,
               ),
             ),
             SizedBox(height: 8),
@@ -94,11 +103,11 @@ class MonthlyCard extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(width: 4),
+            sh8,
             Text(
               'From the last month',
-              style: TextStyle(
-                color: Colors.grey[600],
+              style: h6.copyWith(
+                color: Colors.grey,
                 fontSize: 12,
               ),
             ),

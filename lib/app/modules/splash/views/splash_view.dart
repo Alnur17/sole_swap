@@ -21,18 +21,26 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
       Get.offAll(() => OnboardingView(),
-        transition: Transition.rightToLeft,
-        duration: Duration(seconds: 1)
-     );
+          transition: Transition.rightToLeft, duration: Duration(seconds: 1));
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: themeController.isDarkMode.value ? Colors.black87 : AppColors.splashBackColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.black87
+          : AppColors.splashBackColor,
       body: Center(
-        child: Image.asset(AppImages.splashLogo,scale: 4,),
+        child: themeController.isDarkMode.value
+            ? Image.asset(
+                AppImages.authLogo,
+                scale: 4,
+              )
+            : Image.asset(
+                AppImages.splashLogo,
+                scale: 4,
+              ),
       ),
     );
   }

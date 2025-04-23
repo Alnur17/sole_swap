@@ -8,20 +8,30 @@ import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class VendorOrderDetailsView extends GetView {
   const VendorOrderDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.transparent,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Text(
           'Order Details',
-          style: titleStyle,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
         leading: Padding(
@@ -60,7 +70,9 @@ class VendorOrderDetailsView extends GetView {
                 ),
                 Text(
                   'HJ472839',
-                  style: h3.copyWith(fontSize: 14),
+                  style: h3.copyWith(fontSize: 14,color: themeController.isDarkMode.value
+                  ? AppColors.white
+                    : AppColors.black,),
                 ),
               ],
             ),
@@ -73,7 +85,9 @@ class VendorOrderDetailsView extends GetView {
                 ),
                 Text(
                   'Rebecca Fox',
-                  style: h3.copyWith(fontSize: 14),
+                  style: h3.copyWith(fontSize: 14,color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,),
                 ),
               ],
             ),
@@ -87,7 +101,9 @@ class VendorOrderDetailsView extends GetView {
                 Expanded(
                   child: Text(
                     '2345 Market St, San Francisco,CA ',
-                    style: h3.copyWith(fontSize: 14),
+                    style: h3.copyWith(fontSize: 14,color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,),
                   ),
                 ),
               ],
@@ -101,7 +117,9 @@ class VendorOrderDetailsView extends GetView {
                 ),
                 Text(
                   '07/04/25 - 09/04/25 ',
-                  style: h3.copyWith(fontSize: 14),
+                  style: h3.copyWith(fontSize: 14,color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,),
                 ),
               ],
             ),
@@ -114,14 +132,18 @@ class VendorOrderDetailsView extends GetView {
                 ),
                 Text(
                   'Apple Pay',
-                  style: h3.copyWith(fontSize: 14),
+                  style: h3.copyWith(fontSize: 14,color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,),
                 ),
               ],
             ),
             sh20,
             Text(
               'Price Details',
-              style: h3.copyWith(fontSize: 14),
+              style: h3.copyWith(fontSize: 14,color: themeController.isDarkMode.value
+                  ? AppColors.white
+                  : AppColors.black,),
             ),
             sh8,
             Row(
@@ -133,7 +155,9 @@ class VendorOrderDetailsView extends GetView {
                 Spacer(),
                 Text(
                   '\$36',
-                  style: h3.copyWith(fontSize: 14),
+                  style: h3.copyWith(fontSize: 14,color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,),
                 ),
               ],
             ),
@@ -147,7 +171,9 @@ class VendorOrderDetailsView extends GetView {
                 Spacer(),
                 Text(
                   '\$4',
-                  style: h3.copyWith(fontSize: 14),
+                  style: h3.copyWith(fontSize: 14,color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,),
                 ),
               ],
             ),
@@ -156,12 +182,16 @@ class VendorOrderDetailsView extends GetView {
               children: [
                 Text(
                   'Total Payment',
-                  style: h3.copyWith(fontSize: 14),
+                  style: h3.copyWith(fontSize: 14,color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,),
                 ),
                 Spacer(),
                 Text(
                   '\$40',
-                  style: h3.copyWith(fontSize: 14),
+                  style: h3.copyWith(fontSize: 14,color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,),
                 ),
               ],
             ),

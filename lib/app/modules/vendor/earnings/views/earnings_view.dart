@@ -7,6 +7,7 @@ import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_button.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class EarningsView extends StatefulWidget {
   const EarningsView({super.key});
@@ -16,6 +17,8 @@ class EarningsView extends StatefulWidget {
 }
 
 class _EarningsViewState extends State<EarningsView> {
+  final ThemeController themeController = Get.find();
+
   final List<Map<String, String?>> dummyData = [
     {
       'id': '01',
@@ -36,13 +39,21 @@ class _EarningsViewState extends State<EarningsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.black87
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.transparent,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Text(
           'Earning',
-          style: titleStyle,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -74,7 +85,7 @@ class _EarningsViewState extends State<EarningsView> {
                   CustomButton(
                     text: 'Withdraw',
                     onPressed: () {
-                       Get.to(()=> WithdrawSuccessfulView());
+                      Get.to(() => WithdrawSuccessfulView());
                     },
                     backgroundColor: AppColors.deepBlue,
                     textStyle: h3.copyWith(
@@ -86,7 +97,12 @@ class _EarningsViewState extends State<EarningsView> {
             sh16,
             Text(
               'Recent Transactions',
-              style: h3.copyWith(fontWeight: FontWeight.w500),
+              style: h3.copyWith(
+                fontWeight: FontWeight.w500,
+                color: themeController.isDarkMode.value
+                    ? AppColors.white
+                    : AppColors.black,
+              ),
             ),
             sh16,
             Container(
@@ -141,7 +157,9 @@ class _EarningsViewState extends State<EarningsView> {
                     bottomLeft: Radius.circular(12),
                     bottomRight: Radius.circular(12),
                   ),
-                  color: AppColors.white,
+                  color: themeController.isDarkMode.value
+                      ? Colors.white12
+                      : AppColors.white,
                 ),
                 child: ListView.builder(
                   padding: EdgeInsets.symmetric(horizontal: 12),
@@ -149,41 +167,47 @@ class _EarningsViewState extends State<EarningsView> {
                   itemBuilder: (context, index) {
                     final data = dummyData[index];
                     return ListTile(
-                      onTap: (){
-                        Get.to(()=> VendorEarningDetailsView());
+                      onTap: () {
+                        Get.to(() => VendorEarningDetailsView());
                       },
                       contentPadding: EdgeInsets.zero,
                       leading: Text(
                         data['id'] ?? 'N/A',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500, fontSize: 10),
+                        style: h7.copyWith(
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             data['fullName'] ?? 'No Name',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 10,
+                            style: h7.copyWith(
+                              color: themeController.isDarkMode.value
+                                  ? AppColors.white
+                                  : AppColors.black,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
                             data['accNumber'] ?? 'No account',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 10,
+                            style: h7.copyWith(
+                              color: themeController.isDarkMode.value
+                                  ? AppColors.white
+                                  : AppColors.black,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
                             data['date'] ?? 'No Date',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 10,
+                            style: h7.copyWith(
+                              color: themeController.isDarkMode.value
+                                  ? AppColors.white
+                                  : AppColors.black,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -197,9 +221,10 @@ class _EarningsViewState extends State<EarningsView> {
                             Expanded(
                               child: Text(
                                 data['amount'] ?? '\$0',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 10,
+                                style: h7.copyWith(
+                                  color: themeController.isDarkMode.value
+                                      ? AppColors.white
+                                      : AppColors.black,
                                 ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -208,6 +233,9 @@ class _EarningsViewState extends State<EarningsView> {
                             Image.asset(
                               AppImages.arrowRight,
                               scale: 4,
+                              color: themeController.isDarkMode.value
+                                  ? AppColors.white
+                                  : AppColors.black,
                             ),
                           ],
                         ),

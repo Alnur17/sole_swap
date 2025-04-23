@@ -13,7 +13,7 @@ import '../../../../../common/widgets/custom_button.dart';
 import '../controllers/auth_dashboard_controller.dart';
 
 class AuthDashboardView extends GetView<AuthDashboardController> {
-   const AuthDashboardView({super.key});
+  const AuthDashboardView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -69,21 +69,48 @@ class AuthDashboardView extends GetView<AuthDashboardController> {
                 CustomButton(
                   text: 'Use phone number',
                   onPressed: () {
-                     Get.to(() => PhoneSignUpView());
+                    Get.to(() => PhoneSignUpView());
                   },
                 ),
                 sh20,
-                CustomButton(
-                  text: 'Continue with email',
-                  onPressed: () {
+                GestureDetector(
+                  onTap: () {
                     Get.to(() => SignUpView());
                   },
-                  backgroundColor: AppColors.transparent,
-                  textStyle: h3.copyWith(
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w700,
+                  child: Container(
+                    height: 48,
+                    width: double.infinity,
+                    padding: const EdgeInsets.only(left: 12, right: 12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: AppColors.silver,
+                      ),
+                      color: AppColors.transparent,
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Continue with email',
+                        style: h3.copyWith(
+                          color: AppColors.black,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
+                // CustomButton(
+                //   text: 'Continue with email',
+                //   onPressed: () {
+                //     Get.to(() => SignUpView());
+                //   },
+                //   backgroundColor: AppColors.transparent,
+                //   textStyle: h3.copyWith(
+                //     color: AppColors.black,
+                //     fontWeight: FontWeight.w700,
+                //   ),
+                //   borderColor: AppColors.black,
+                // ),
                 sh12,
                 GestureDetector(
                   onTap: () {

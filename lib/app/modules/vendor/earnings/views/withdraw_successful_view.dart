@@ -7,20 +7,30 @@ import 'package:sole_swap/common/widgets/custom_button.dart';
 
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_text_style/styles.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class WithdrawSuccessfulView extends GetView {
   const WithdrawSuccessfulView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.transparent,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Text(
           'Success',
-          style: titleStyle,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,

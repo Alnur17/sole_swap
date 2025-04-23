@@ -10,20 +10,30 @@ import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class AddProductsView extends GetView {
   const AddProductsView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.transparent,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Text(
           'Add Products',
-          style: titleStyle,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
         leading: Padding(
@@ -45,7 +55,11 @@ class AddProductsView extends GetView {
             children: [
               Text(
                 'Upload Image',
-                style: h5,
+                style: h5.copyWith(
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
+                ),
               ),
               sh12,
               UploadWidget(
@@ -83,7 +97,11 @@ class AddProductsView extends GetView {
               sh16,
               Text(
                 'Product Name',
-                style: h5,
+                style: h5.copyWith(
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
+                ),
               ),
               sh12,
               CustomTextField(
@@ -92,7 +110,11 @@ class AddProductsView extends GetView {
               sh16,
               Text(
                 'Product Details',
-                style: h5,
+                style: h5.copyWith(
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
+                ),
               ),
               sh12,
               CustomTextField(
@@ -102,21 +124,33 @@ class AddProductsView extends GetView {
               sh16,
               Text(
                 'Category Name',
-                style: h5,
+                style: h5.copyWith(
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
+                ),
               ),
               sh12,
               CustomTextField(),
               sh16,
               Text(
                 'Product Price',
-                style: h5,
+                style: h5.copyWith(
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
+                ),
               ),
               sh12,
               CustomTextField(),
               sh16,
               Text(
                 'Rental Duration',
-                style: h5,
+                style: h5.copyWith(
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
+                ),
               ),
               sh12,
               CustomTextField(
@@ -125,14 +159,22 @@ class AddProductsView extends GetView {
               sh16,
               Text(
                 'Rent Price',
-                style: h5,
+                style: h5.copyWith(
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
+                ),
               ),
               sh12,
               CustomTextField(),
               sh16,
               Text(
                 'Important Note',
-                style: h5,
+                style: h5.copyWith(
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
+                ),
               ),
               sh12,
               CustomTextField(

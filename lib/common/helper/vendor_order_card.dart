@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
 import 'package:sole_swap/common/app_text_style/styles.dart';
+import 'package:sole_swap/common/size_box/custom_sizebox.dart';
+
+import '../../app/controllers/theme_controller.dart';
 
 class VendorOrderCard extends StatelessWidget {
   final String image;
@@ -18,8 +22,10 @@ class VendorOrderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Card(
-      color: AppColors.white,
+      color:
+          themeController.isDarkMode.value ? AppColors.black : AppColors.white,
       child: Padding(
         padding: EdgeInsets.all(8),
         child: Row(
@@ -43,18 +49,27 @@ class VendorOrderCard extends StatelessWidget {
                 children: [
                   Text(
                     'Order Summary',
-                    style: h3.copyWith(fontSize: 18),
+                    style: h3.copyWith(
+                      fontSize: 18,
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   SizedBox(height: 4),
                   Text(
                     name,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: h3.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   SizedBox(height: 4),
-                  Text(size, style: TextStyle(color: Colors.grey)),
+                  Text(size, style: h6.copyWith(color: AppColors.grey),),
                   if (date != null) ...[
-                    SizedBox(height: 4),
-                    Text(date!, style: TextStyle(color: Colors.grey)),
+                    sh5,
+                    Text(date!, style: h6.copyWith(color: AppColors.grey),),
                   ],
                 ],
               ),

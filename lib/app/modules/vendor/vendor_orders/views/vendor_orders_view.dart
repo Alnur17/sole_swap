@@ -9,7 +9,7 @@ import 'package:sole_swap/common/widgets/search_filed.dart';
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
-import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class VendorOrdersView extends StatefulWidget {
   const VendorOrdersView({super.key});
@@ -19,6 +19,8 @@ class VendorOrdersView extends StatefulWidget {
 }
 
 class _VendorOrdersViewState extends State<VendorOrdersView> {
+  final ThemeController themeController = Get.find();
+
   var selectedValue = 'Pending'.obs;
 
   final List<Map<String, String?>> dummyData = [
@@ -41,25 +43,34 @@ class _VendorOrdersViewState extends State<VendorOrdersView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.black87
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.transparent,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Text(
           'Orders',
-          style: titleStyle,
-        ),
-        centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16),
-          child: CustomCircularContainer(
-            imagePath: AppImages.arrowBack,
-            onTap: () {
-              Get.back();
-            },
-            padding: 4,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
           ),
         ),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        // leading: Padding(
+        //   padding: const EdgeInsets.only(left: 16),
+        //   child: CustomCircularContainer(
+        //     imagePath: AppImages.arrowBack,
+        //     onTap: () {
+        //       Get.back();
+        //     },
+        //     padding: 4,
+        //   ),
+        // ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -144,7 +155,7 @@ class _VendorOrdersViewState extends State<VendorOrdersView> {
                     bottomLeft: Radius.circular(12),
                     bottomRight: Radius.circular(12),
                   ),
-                  color: AppColors.white,
+                  color: themeController.isDarkMode.value ? Colors.white12 : AppColors.white,
                 ),
                 child: ListView.builder(
                   padding: EdgeInsets.symmetric(horizontal: 12),
@@ -158,35 +169,41 @@ class _VendorOrdersViewState extends State<VendorOrdersView> {
                       contentPadding: EdgeInsets.zero,
                       leading: Text(
                         data['orderId'] ?? 'N/A',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500, fontSize: 10),
+                        style: h6.copyWith(
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             data['customerName'] ?? 'No Name',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 10,
+                            style: h6.copyWith(
+                              color: themeController.isDarkMode.value
+                                  ? AppColors.white
+                                  : AppColors.black,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
                             data['productName'] ?? 'No product',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 10,
+                            style: h6.copyWith(
+                              color: themeController.isDarkMode.value
+                                  ? AppColors.white
+                                  : AppColors.black,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                           Text(
                             data['quantity'] ?? '0',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 10,
+                            style: h6.copyWith(
+                              color: themeController.isDarkMode.value
+                                  ? AppColors.white
+                                  : AppColors.black,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -194,16 +211,17 @@ class _VendorOrdersViewState extends State<VendorOrdersView> {
                         ],
                       ),
                       trailing: SizedBox(
-                        width: 40,
+                        width: 45,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Expanded(
                               child: Text(
                                 data['amount'] ?? '\$0',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 10,
+                                style: h6.copyWith(
+                                  color: themeController.isDarkMode.value
+                                      ? AppColors.white
+                                      : AppColors.black,
                                 ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -212,6 +230,9 @@ class _VendorOrdersViewState extends State<VendorOrdersView> {
                             Image.asset(
                               AppImages.arrowRight,
                               scale: 4,
+                              color: themeController.isDarkMode.value
+                                  ? AppColors.white
+                                  : AppColors.black,
                             ),
                           ],
                         ),
