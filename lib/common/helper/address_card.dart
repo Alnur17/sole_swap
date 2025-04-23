@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../common/size_box/custom_sizebox.dart';
+import '../../app/controllers/theme_controller.dart';
 import '../app_color/app_colors.dart';
 import '../app_images/app_images.dart';
 import '../app_text_style/styles.dart';
@@ -23,11 +25,14 @@ class AddressCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Card(
-      color: AppColors.white,
+      color: themeController.isDarkMode.value
+          ? AppColors.black
+          : AppColors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: AppColors.silver),
+        //side: BorderSide(color: AppColors.silver),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 12),
@@ -50,7 +55,7 @@ class AddressCard extends StatelessWidget {
                   Text(
                     title,
                     style: h4.copyWith(
-                      color: AppColors.black100,
+                      color: AppColors.grey,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -59,6 +64,9 @@ class AddressCard extends StatelessWidget {
                     address,
                     style: h4.copyWith(
                       fontWeight: FontWeight.bold,
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
                     ),
                   ),
                   if (isDefault) ...[

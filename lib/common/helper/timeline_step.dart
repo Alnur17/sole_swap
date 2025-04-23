@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sole_swap/common/app_text_style/styles.dart';
+
+import '../../app/controllers/theme_controller.dart';
+import '../app_color/app_colors.dart';
 
 class TimelineStep extends StatelessWidget {
   final String title;
@@ -18,6 +23,7 @@ class TimelineStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -54,10 +60,10 @@ class TimelineStep extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                style: h3.copyWith(
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
                 ),
               ),
               const SizedBox(height: 4),

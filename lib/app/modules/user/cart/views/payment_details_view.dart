@@ -8,21 +8,31 @@ import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_button.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class PaymentDetailsView extends GetView {
   const PaymentDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
-        backgroundColor: AppColors.background,
         automaticallyImplyLeading: false,
         title: Text(
           'Payment Details',
-          style: appBarStyle,
+          style: appBarStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
       ),
@@ -36,7 +46,9 @@ class PaymentDetailsView extends GetView {
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: themeController.isDarkMode.value
+                    ? AppColors.black
+                    : AppColors.white,
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
@@ -62,17 +74,44 @@ class PaymentDetailsView extends GetView {
                     '\$35.00',
                     style: h2.copyWith(
                       fontWeight: FontWeight.w500,
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
                     ),
                   ),
                   sh20,
-                  _buildRow('Date', '31 Dec 2023'),
-                  _buildRow('Transaction ID', '#123456789'),
-                  _buildRow('Account', 'Neeraj'),
+                  _buildRow(
+                    'Date',
+                    '31 Dec 2023',
+                    themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  _buildRow(
+                    'Transaction ID',
+                    '#123456789',
+                    themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                  _buildRow(
+                    'Account',
+                    'Neeraj',
+                    themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                   Divider(
                     color: Colors.grey.shade200,
                   ),
                   //_buildRow('Total Payment', '\$89.99'),
-                  _buildRow('Total', '\$35.00'),
+                  _buildRow(
+                    'Total',
+                    '\$35.00',
+                    themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ],
               ),
             ),
@@ -104,7 +143,7 @@ class PaymentDetailsView extends GetView {
     );
   }
 
-  Widget _buildRow(String label, String value) {
+  Widget _buildRow(String label, String value, Color themeColor) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12),
       child: Row(
@@ -121,6 +160,7 @@ class PaymentDetailsView extends GetView {
             value,
             style: h5.copyWith(
               fontWeight: FontWeight.w600,
+              color: themeColor,
             ),
           ),
         ],

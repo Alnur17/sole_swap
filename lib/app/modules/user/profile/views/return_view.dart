@@ -9,20 +9,30 @@ import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class ReturnView extends GetView {
   const ReturnView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.background,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Text(
           'Return',
-          style: titleStyle,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
         leading: Padding(
@@ -43,7 +53,11 @@ class ReturnView extends GetView {
           children: [
             Text(
               'Upload images of the sneakers to verify their condition before return.',
-              style: h3,
+              style: h3.copyWith(
+                color: themeController.isDarkMode.value
+                    ? AppColors.white
+                    : AppColors.black,
+              ),
               textAlign: TextAlign.center,
             ),
             sh16,
@@ -57,7 +71,11 @@ class ReturnView extends GetView {
                 sw5,
                 Text(
                   'Upload Sneaker Images',
-                  style: h3,
+                  style: h3.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
               ],
             ),
@@ -66,7 +84,11 @@ class ReturnView extends GetView {
               alignment: Alignment.center,
               child: Text(
                 'Please upload clear images from all angles',
-                style: h5,
+                style: h5.copyWith(
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
+                ),
               ),
             ),
             sh16,
@@ -137,7 +159,14 @@ class ReturnView extends GetView {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Verification Result', style: h3),
+                Text(
+                  'Verification Result',
+                  style: h3.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                ),
                 Row(
                   children: [
                     const Icon(Icons.check_circle,
@@ -160,7 +189,11 @@ class ReturnView extends GetView {
               children: [
                 Text(
                   'Condition Rating',
-                  style: h5,
+                  style: h5.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
                 Text(
                   '7/10',
@@ -193,7 +226,12 @@ class ReturnView extends GetView {
             // sh16,
             // Text(
             //   'No Issues Detected',
-            //   style: h3.copyWith(fontWeight: FontWeight.w500),
+            //   style: h3.copyWith(
+            //     fontWeight: FontWeight.w500,
+            //     color: themeController.isDarkMode.value
+            //         ? AppColors.white
+            //         : AppColors.black,
+            //   ),
             // ),
             sh16,
             Container(
@@ -249,6 +287,9 @@ class ReturnView extends GetView {
                 Image.asset(
                   AppImages.clock,
                   scale: 4,
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
                 ),
                 sw8,
                 Expanded(
@@ -269,7 +310,9 @@ class ReturnView extends GetView {
               text: 'Cancel Return',
               onPressed: () {},
               backgroundColor: AppColors.transparent,
-              textColor: Colors.black,
+              textColor: themeController.isDarkMode.value
+                  ? AppColors.white
+                  : AppColors.black,
               borderColor: Colors.black,
             ),
           ],

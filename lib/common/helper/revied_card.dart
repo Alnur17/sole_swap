@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sole_swap/app/controllers/theme_controller.dart';
 
+import '../app_color/app_colors.dart';
 import '../app_text_style/styles.dart';
 import '../size_box/custom_sizebox.dart';
 
@@ -21,6 +24,7 @@ class ReviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return GestureDetector(
       onTap: onTap,
       child: Column(
@@ -38,7 +42,11 @@ class ReviewCard extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: h3,
+                    style: h3.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   sh5,
                   Image.asset(
@@ -52,8 +60,13 @@ class ReviewCard extends StatelessWidget {
           sh12,
           Text(
             reviewText,
-            style: h5,
+            style: h5.copyWith(
+              color: themeController.isDarkMode.value
+                  ? AppColors.white
+                  : AppColors.black,
+            ),
           ),
+          sh8,
         ],
       ),
     );

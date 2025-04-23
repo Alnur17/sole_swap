@@ -12,20 +12,30 @@ import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_button.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
 import '../../../../../common/widgets/custom_textfield.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class EditProfileView extends GetView {
   const EditProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.transparent,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Text(
           'Edit Profile',
-          style: titleStyle,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
         leading: Padding(
@@ -48,7 +58,14 @@ class EditProfileView extends GetView {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   sh20,
-                  Text('Full name', style: h3),
+                  Text(
+                    'Full name',
+                    style: h3.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
                   sh8,
                   Row(
                     children: [
@@ -72,7 +89,14 @@ class EditProfileView extends GetView {
                     ],
                   ),
                   sh20,
-                  Text('Email address', style: h3),
+                  Text(
+                    'Email address',
+                    style: h3.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
                   sh8,
                   CustomTextField(
                     hintText: 'abc@gmail.com',
@@ -82,7 +106,14 @@ class EditProfileView extends GetView {
                     ),
                   ),
                   sh20,
-                  Text('Location', style: h3),
+                  Text(
+                    'Location',
+                    style: h3.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
                   sh8,
                   CustomTextField(
                     preIcon: Icon(Icons.location_on_outlined),
@@ -93,7 +124,14 @@ class EditProfileView extends GetView {
                     ),
                   ),
                   sh20,
-                  Text('Contact', style: h3),
+                  Text(
+                    'Contact',
+                    style: h3.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
                   sh8,
                   IntlPhoneField(
                     decoration: InputDecoration(
@@ -115,7 +153,14 @@ class EditProfileView extends GetView {
                       }
                     },
                   ),
-                  Text('Gender', style: h3),
+                  Text(
+                    'Gender',
+                    style: h3.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
                   sh8,
                   CustomTextField(
                     hintText: 'Male',
@@ -125,7 +170,14 @@ class EditProfileView extends GetView {
                     ),
                   ),
                   sh20,
-                  Text('Age', style: h3),
+                  Text(
+                    'Age',
+                    style: h3.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
+                  ),
                   sh8,
                   CustomTextField(
                     hintText: '24',
@@ -135,11 +187,15 @@ class EditProfileView extends GetView {
                     ),
                   ),
                   sh20,
-                  Text('Upload NID/Driving License/Passport', style: h3),
+                  Text('Upload NID/Driving License/Passport', style: h3.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),),
                   sh8,
                   UploadWidget(
                     onTap: () {},
-                    imagePath: AppImages.apple,
+                    imagePath: AppImages.add,
                     label: 'Upload',
                   ),
                 ],

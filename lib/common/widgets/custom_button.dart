@@ -58,6 +58,9 @@ class CustomButton extends StatelessWidget {
                   child: Image.asset(
                     imageAssetPath!,
                     scale: 4,
+                    color: themeController.isDarkMode.value
+                        ? Colors.white
+                        : AppColors.black,
                   ),
                 ),
               ],

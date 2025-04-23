@@ -8,19 +8,30 @@ import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/const_text/const_text.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class PrivacyPolicyView extends GetView {
   const PrivacyPolicyView({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.background,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Text(
           'Privacy Policy',
-          style: titleStyle,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
         leading: Padding(
@@ -49,6 +60,9 @@ class PrivacyPolicyView extends GetView {
                 policyIntroduction,
                 style: h4.copyWith(
                   fontSize: 14,
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
                 ),
               ),
               sh24,
@@ -56,6 +70,9 @@ class PrivacyPolicyView extends GetView {
                 policyIntroduction,
                 style: h4.copyWith(
                   fontSize: 14,
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
                 ),
               ),
               sh24,
@@ -63,6 +80,9 @@ class PrivacyPolicyView extends GetView {
                 policyIntroduction,
                 style: h4.copyWith(
                   fontSize: 14,
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
                 ),
               ),
               sh24,
@@ -70,12 +90,19 @@ class PrivacyPolicyView extends GetView {
                 policyIntroduction,
                 style: h4.copyWith(
                   fontSize: 14,
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
                 ),
-              ), sh24,
+              ),
+              sh24,
               Text(
                 policyIntroduction,
                 style: h4.copyWith(
                   fontSize: 14,
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
                 ),
               ),
             ],

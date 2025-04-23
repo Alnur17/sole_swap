@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
 
 import '../../../../../../common/app_text_style/styles.dart';
+import '../../app/controllers/theme_controller.dart';
 
 class UploadWidget extends StatelessWidget {
   final VoidCallback onTap;
@@ -25,6 +27,7 @@ class UploadWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Container(
       height: height,
       width: width,
@@ -51,6 +54,7 @@ class UploadWidget extends StatelessWidget {
                 imagePath,
                 scale: 4,
                 fit: BoxFit.cover,
+                color: themeController.isDarkMode.value ? AppColors.white : AppColors.black,
               ),
             ),
             SizedBox(height: 10),

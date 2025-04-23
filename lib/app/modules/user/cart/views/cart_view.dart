@@ -11,6 +11,7 @@ import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/helper/cart_item.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
 import '../../../../../common/widgets/custom_textfield.dart';
+import '../../../../controllers/theme_controller.dart';
 import '../controllers/cart_controller.dart';
 
 class CartView extends GetView<CartController> {
@@ -18,11 +19,15 @@ class CartView extends GetView<CartController> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
-        scrolledUnderElevation: 0,
-        backgroundColor: AppColors.background,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: CustomCircularContainer(
@@ -35,7 +40,11 @@ class CartView extends GetView<CartController> {
         ),
         title: Text(
           'Cart',
-          style: appBarStyle,
+          style: appBarStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
       ),
@@ -71,7 +80,11 @@ class CartView extends GetView<CartController> {
               children: [
                 Text(
                   'Promo code',
-                  style: h3,
+                  style: h3.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
                 sh8,
                 CustomTextField(
@@ -131,7 +144,7 @@ class CartView extends GetView<CartController> {
                 CustomButton(
                   text: 'Checkout',
                   onPressed: () {
-                    Get.to(()=> CheckoutView());
+                    Get.to(() => CheckoutView());
                   },
                 ),
                 sh20,

@@ -11,17 +11,22 @@ import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_button.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class CheckoutView extends GetView {
   const CheckoutView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
-        scrolledUnderElevation: 0,
-        backgroundColor: AppColors.background,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: CustomCircularContainer(
@@ -34,7 +39,11 @@ class CheckoutView extends GetView {
         ),
         title: Text(
           'Checkout',
-          style: appBarStyle,
+          style: appBarStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
       ),
@@ -46,7 +55,11 @@ class CheckoutView extends GetView {
             sh20,
             Text(
               'Contact Information',
-              style: h3,
+              style: h3.copyWith(
+                color: themeController.isDarkMode.value
+                    ? AppColors.white
+                    : AppColors.black,
+              ),
             ),
             sh8,
             // ListTile(
@@ -95,27 +108,46 @@ class CheckoutView extends GetView {
             sh20,
             Text(
               'Address',
-              style: h3,
+              style: h3.copyWith(
+                color: themeController.isDarkMode.value
+                    ? AppColors.white
+                    : AppColors.black,
+              ),
             ),
             sh8,
             CustomTextField(
               hintText: 'Enter your address',
             ),
             sh40,
-            // Subtotal, Shipping, and Total
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Subtotal', style: TextStyle(color: Colors.grey)),
-                Text('\$30.00', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('Subtotal', style: h5.copyWith(color: Colors.grey)),
+                Text(
+                  '\$30.00',
+                  style: h5.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                ),
               ],
             ),
             sh8,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Shipping', style: TextStyle(color: Colors.grey)),
-                Text('\$05.00', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text('Shipping', style: h5.copyWith(color: Colors.grey)),
+                Text(
+                  '\$05.00',
+                  style: h5.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                ),
               ],
             ),
             sh8,
@@ -124,12 +156,22 @@ class CheckoutView extends GetView {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Total Cost',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                Text('\$35.00',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                Text(
+                  'Total Cost',
+                  style: h3.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                ),
+                Text(
+                  '\$35.00',
+                  style: h3.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
+                ),
               ],
             ),
             sh16,

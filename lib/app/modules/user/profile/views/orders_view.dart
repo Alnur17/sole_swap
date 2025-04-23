@@ -10,19 +10,25 @@ import '../../../../../common/helper/order_card.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
 import '../../../../../common/widgets/custom_textfield.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class OrdersView extends StatelessWidget {
   const OrdersView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: themeController.isDarkMode.value
+            ? Colors.white12
+            : AppColors.background,
         appBar: AppBar(
+          backgroundColor: themeController.isDarkMode.value
+              ? AppColors.transparent
+              : AppColors.mainColor,
           scrolledUnderElevation: 0,
-          backgroundColor: AppColors.background,
           leading: Padding(
             padding: const EdgeInsets.only(left: 16),
             child: CustomCircularContainer(
@@ -35,7 +41,11 @@ class OrdersView extends StatelessWidget {
           ),
           title: Text(
             'Order',
-            style: appBarStyle,
+            style: titleStyle.copyWith(
+              color: themeController.isDarkMode.value
+                  ? AppColors.white
+                  : AppColors.black,
+            ),
           ),
           centerTitle: true,
           bottom: TabBar(
@@ -45,8 +55,12 @@ class OrdersView extends StatelessWidget {
               Tab(text: "Canceled"),
             ],
             indicatorSize: TabBarIndicatorSize.tab,
-            indicatorColor: AppColors.black,
-            labelColor: AppColors.black,
+            indicatorColor: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+            labelColor: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
             unselectedLabelColor: AppColors.grey,
           ),
         ),
@@ -69,6 +83,7 @@ class OrderList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return ListView.builder(
       itemCount: 5,
       itemBuilder: (context, index) {
@@ -85,7 +100,15 @@ class OrderList extends StatelessWidget {
               if (status == "Active") {
                 Get.to(() => TrackOrderView());
               } else if (status == "Completed") {
-                showWriteReviewBottomSheet(context);
+                showWriteReviewBottomSheet(
+                  context,
+                  themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
+                  themeController.isDarkMode.value
+                      ? Colors.blueGrey
+                      : AppColors.white,
+                );
               }
             },
           ),
@@ -94,9 +117,10 @@ class OrderList extends StatelessWidget {
     );
   }
 
-  void showWriteReviewBottomSheet(BuildContext context) {
+  void showWriteReviewBottomSheet(
+      BuildContext context, Color textColor, Color backColor) {
     showModalBottomSheet(
-      backgroundColor: AppColors.white,
+      backgroundColor: backColor,
       context: context,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
@@ -109,13 +133,12 @@ class OrderList extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Title
-              const Center(
+              Center(
                 child: Text(
                   'Write Review',
-                  style: TextStyle(
+                  style: h3.copyWith(
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    color: textColor,
                   ),
                 ),
               ),
@@ -132,7 +155,9 @@ class OrderList extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   'How is your order',
-                  style: h3,
+                  style: h3.copyWith(
+                    color: textColor,
+                  ),
                 ),
               ),
               sh5,
@@ -140,7 +165,9 @@ class OrderList extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   'Please give your rating',
-                  style: h6,
+                  style: h6.copyWith(
+                    color: textColor,
+                  ),
                 ),
               ),
               sh8,
@@ -159,9 +186,9 @@ class OrderList extends StatelessWidget {
               // Review Text Field
               Text(
                 'Add details review',
-                style: TextStyle(
-                  fontSize: 16,
+                style: h3.copyWith(
                   fontWeight: FontWeight.w500,
+                  color: textColor,
                 ),
               ),
               sh8,
@@ -175,11 +202,14 @@ class OrderList extends StatelessWidget {
                   Image.asset(
                     AppImages.gallery,
                     scale: 4,
+                    color: textColor,
                   ),
                   sw8,
                   Text(
                     'Add photo',
-                    style: h5,
+                    style: h5.copyWith(
+                      color: textColor,
+                    ),
                   ),
                 ],
               ),

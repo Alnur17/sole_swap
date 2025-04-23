@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sole_swap/app/modules/user/cart/views/cart_view.dart';
 import 'package:sole_swap/app/modules/user/home/controllers/home_controller.dart';
 import 'package:sole_swap/common/app_text_style/styles.dart';
 import 'package:sole_swap/common/widgets/custom_button.dart';
 import 'package:sole_swap/common/widgets/custom_circular_container.dart';
+
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/helper/revied_card.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class ProductDetailsView extends StatefulWidget {
   const ProductDetailsView({super.key});
@@ -18,16 +21,21 @@ class ProductDetailsView extends StatefulWidget {
 }
 
 class _ProductDetailsViewState extends State<ProductDetailsView> {
+  final ThemeController themeController = Get.find();
   final controller = Get.put(HomeController());
   final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
-        backgroundColor: AppColors.background,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: CustomCircularContainer(
@@ -40,14 +48,18 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
         ),
         title: Text(
           'Details',
-          style: appBarStyle,
+          style: appBarStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
         actions: [
           CustomCircularContainer(
             imagePath: AppImages.shop,
             onTap: () {
-              Get.back();
+              Get.to(() => CartView());
             },
           ),
           sw20,
@@ -67,8 +79,11 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           .map(
                             (image) => Container(
                               height: Get.height,
+                              margin: EdgeInsets.symmetric(horizontal: 20),
                               decoration: BoxDecoration(
-                                color: AppColors.background,
+                                color: themeController.isDarkMode.value
+                                    ? Colors.white12
+                                    : AppColors.background,
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               child: ClipRRect(
@@ -111,14 +126,23 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 children: [
                   Text(
                     'Nike Air Max 1 Premium',
-                    style: h2,
+                    style: h2.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   sh8,
                   Row(
                     children: [
                       Text(
                         '\$100',
-                        style: h1.copyWith(fontWeight: FontWeight.w600),
+                        style: h1.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                       sw8,
                       Text(
@@ -137,19 +161,33 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                       sw5,
                       Text(
                         '4.5',
-                        style: h5.copyWith(fontWeight: FontWeight.w500),
+                        style: h5.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                       sw8,
                       Container(
                         height: 4,
                         width: 3,
                         decoration: ShapeDecoration(
-                            shape: CircleBorder(), color: Colors.black),
+                          shape: CircleBorder(),
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                       sw8,
                       Text(
                         '123 Reviews',
-                        style: h5.copyWith(fontWeight: FontWeight.w500),
+                        style: h5.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                     ],
                   ),
@@ -158,7 +196,12 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                     children: [
                       Text(
                         'SneakerHub Elite',
-                        style: h3.copyWith(fontSize: 18),
+                        style: h3.copyWith(
+                          fontSize: 18,
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                       Spacer(),
                       Image.asset(
@@ -168,7 +211,12 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                       sw8,
                       Text(
                         '4.5',
-                        style: h5.copyWith(fontWeight: FontWeight.w500),
+                        style: h5.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                     ],
                   ),
@@ -182,7 +230,12 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                       sw8,
                       Text(
                         '2.3 km from Location',
-                        style: h5.copyWith(fontWeight: FontWeight.w500),
+                        style: h5.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                       Spacer(),
                       Text(
@@ -194,12 +247,21 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                   sh20,
                   Text(
                     'Description',
-                    style: h3.copyWith(fontSize: 18),
+                    style: h3.copyWith(
+                      fontSize: 18,
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   sh8,
                   Text(
                     'The Nike Air Max 1 is designed for comfort and style, perfect for casual wear and everyday activities. Features premium materials and iconic Air cushioning for all-day comfort.',
-                    style: h5,
+                    style: h5.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   sh20,
                   Row(
@@ -207,11 +269,18 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                       Image.asset(
                         AppImages.right,
                         scale: 4,
+                        color: themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
                       ),
                       sw8,
                       Text(
                         'Great for casual wear',
-                        style: h4,
+                        style: h4.copyWith(
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                     ],
                   ),
@@ -221,50 +290,118 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                       Image.asset(
                         AppImages.close,
                         scale: 4,
+                        color: themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
                       ),
                       sw8,
                       Text(
                         'Not suitable for basketball',
-                        style: h4,
+                        style: h4.copyWith(
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                     ],
                   ),
                   sh20,
                   Text(
                     'Rental Duration',
-                    style: h3.copyWith(fontSize: 18),
+                    style: h3.copyWith(
+                      fontSize: 18,
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   sh8,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _buildDurationButton(1, '1 Day', '\$5'),
-                      _buildDurationButton(2, '2 Day', '\$8'),
-                      _buildDurationButton(3, '3 Day', '\$15'),
-                      _buildDurationButton(4, '4 Day', '\$20'),
+                      _buildDurationButton(
+                        1,
+                        '1 Day',
+                        '\$5',
+                        themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
+                      _buildDurationButton(
+                        2,
+                        '2 Day',
+                        '\$8',
+                        themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
+                      _buildDurationButton(
+                        3,
+                        '3 Day',
+                        '\$15',
+                        themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
+                      _buildDurationButton(
+                        4,
+                        '4 Day',
+                        '\$20',
+                        themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
                     ],
                   ),
                   sh20,
                   Text(
                     'Select Size',
-                    style: h3.copyWith(fontSize: 18),
+                    style: h3.copyWith(
+                      fontSize: 18,
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   sh8,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _buildDropdown('US SIZE', ['US 8', 'US 9', 'US 10'],
-                          controller.selectedUsSize),
-                      _buildDropdown('UK SIZE', ['UK 7', 'UK 8', 'UK 9'],
-                          controller.selectedUkSize),
-                      _buildDropdown('EU SIZE', ['EU 42', 'EU 43', 'EU 44'],
-                          controller.selectedEuSize),
+                      _buildDropdown(
+                        'US SIZE',
+                        ['US 8', 'US 9', 'US 10'],
+                        controller.selectedUsSize,
+                        themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
+                      _buildDropdown(
+                        'UK SIZE',
+                        ['UK 7', 'UK 8', 'UK 9'],
+                        controller.selectedUkSize,
+                        themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
+                      _buildDropdown(
+                        'EU SIZE',
+                        ['EU 42', 'EU 43', 'EU 44'],
+                        controller.selectedEuSize,
+                        themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
                     ],
                   ),
                   sh20,
                   Text(
                     'Customer Reviews',
-                    style: h3.copyWith(fontSize: 18),
+                    style: h3.copyWith(
+                      fontSize: 18,
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   sh12,
                   ListView.builder(
@@ -363,7 +500,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     );
   }
 
-  Widget _buildDurationButton(int duration, String label, String price) {
+  Widget _buildDurationButton(
+      int duration, String label, String price, Color themeColor) {
     return Obx(() {
       bool isSelected = controller.selectedDuration.value == duration;
       return GestureDetector(
@@ -385,7 +523,10 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
             children: [
               Text(
                 label,
-                style: h4.copyWith(fontWeight: FontWeight.bold),
+                style: h4.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: themeColor,
+                ),
               ),
               Text(
                 price,
@@ -398,8 +539,8 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
     });
   }
 
-  Widget _buildDropdown(
-      String label, List<String> items, RxString selectedValue) {
+  Widget _buildDropdown(String label, List<String> items,
+      RxString selectedValue, Color themeColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -415,13 +556,19 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
             borderRadius: BorderRadius.circular(8),
           ),
           child: Obx(() => DropdownButton<String>(
-                dropdownColor: AppColors.white,
                 value: selectedValue.value,
                 underline: SizedBox(),
                 items: items.map((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
-                    child: Text(value, style: h5),
+                    child: Text(
+                      value,
+                      style: h5.copyWith(
+                        color: themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
+                    ),
                   );
                 }).toList(),
                 onChanged: (value) {

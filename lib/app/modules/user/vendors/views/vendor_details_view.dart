@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sole_swap/app/modules/user/cart/views/cart_view.dart';
 
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
@@ -10,6 +11,7 @@ import '../../../../../common/helper/trending_shoe_card.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
 import '../../../../../common/widgets/custom_row_header.dart';
+import '../../../../controllers/theme_controller.dart';
 import '../../home/views/new_sneakers_view.dart';
 import '../../home/views/product_details_view.dart';
 import '../../home/views/trending_sneakers_view.dart';
@@ -19,14 +21,23 @@ class VendorDetailsView extends GetView {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: AppColors.transparent,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Text(
           'Vendor Details',
-          style: titleStyle,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
         leading: Padding(
@@ -42,7 +53,9 @@ class VendorDetailsView extends GetView {
         actions: [
           CustomCircularContainer(
             imagePath: AppImages.shop,
-            onTap: () {},
+            onTap: () {
+              Get.to(()=> CartView());
+            },
           ),
           sw20,
         ],
@@ -77,7 +90,12 @@ class VendorDetailsView extends GetView {
                     children: [
                       Text(
                         'SneakerHub Elite',
-                        style: h3.copyWith(fontSize: 20),
+                        style: h3.copyWith(
+                          fontSize: 20,
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                       Spacer(),
                       Image.asset(
@@ -87,7 +105,11 @@ class VendorDetailsView extends GetView {
                       sw8,
                       Text(
                         '4.5',
-                        style: h5.copyWith(fontWeight: FontWeight.w500),
+                        style: h5.copyWith(fontWeight: FontWeight.w500,
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                     ],
                   ),
@@ -101,7 +123,12 @@ class VendorDetailsView extends GetView {
                       sw8,
                       Text(
                         '2.3 km from Location',
-                        style: h5.copyWith(fontWeight: FontWeight.w500),
+                        style: h5.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
                       ),
                       Spacer(),
                       Text(
@@ -113,12 +140,21 @@ class VendorDetailsView extends GetView {
                   sh20,
                   Text(
                     'Description',
-                    style: h3.copyWith(fontSize: 18),
+                    style: h3.copyWith(
+                      fontSize: 18,
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   sh8,
                   Text(
                     '"Sneaker Haven offers a wide selection of high-end sneakers for rent. Whether you\'re looking for the latest Nike Air Jordans or a classic pair of Adidas, we have something for every sneaker enthusiast. Rent with us for your next event or casual outing!"',
-                    style: h5,
+                    style:h5.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                 ],
               ),

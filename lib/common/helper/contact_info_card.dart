@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_text_style/styles.dart';
+import '../../app/controllers/theme_controller.dart';
+import '../size_box/custom_sizebox.dart';
 
 class ContactInfoCard extends StatelessWidget {
   final IconData icon;
@@ -20,6 +23,7 @@ class ContactInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8),
       child: Row(
@@ -32,18 +36,22 @@ class ContactInfoCard extends StatelessWidget {
             ),
             child: Icon(
               icon,
-              color: Colors.black,
+              color: AppColors.black,
               size: 24,
             ),
           ),
-          SizedBox(width: 16),
+          sw16,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: h5,
+                  style: h5.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
                 SizedBox(height: 4),
                 Text(

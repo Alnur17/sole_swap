@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
+
+import '../../app/controllers/theme_controller.dart';
+import '../app_text_style/styles.dart';
 
 class OrderCard extends StatelessWidget {
   final String image;
@@ -23,6 +27,7 @@ class OrderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     Color? statusColor;
     String? statusText;
     if (status != null) {
@@ -46,7 +51,9 @@ class OrderCard extends StatelessWidget {
     }
 
     return Card(
-      color: AppColors.white,
+      color: themeController.isDarkMode.value
+          ? AppColors.black
+          : AppColors.white,
       child: Padding(
         padding: EdgeInsets.all(8),
         child: Row(
@@ -70,13 +77,17 @@ class OrderCard extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: h3.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   SizedBox(height: 4),
-                  Text(size, style: TextStyle(color: Colors.grey)),
+                  Text(size, style: h6.copyWith(color: AppColors.grey),),
                   if (date != null) ...[
                     SizedBox(height: 4),
-                    Text(date!, style: TextStyle(color: Colors.grey)),
+                    Text(date!, style: h6.copyWith(color: AppColors.grey),),
                   ],
                   SizedBox(height: 8),
                   Row(
@@ -84,9 +95,10 @@ class OrderCard extends StatelessWidget {
                     children: [
                       Text(
                         price,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                        style: h3.copyWith(
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
                         ),
                       ),
                       if (status != null && statusText != null && statusColor != null)
@@ -100,7 +112,7 @@ class OrderCard extends StatelessWidget {
                             ),
                             child: Text(
                               statusText,
-                              style: TextStyle(
+                              style: h5.copyWith(
                                 color: statusColor,
                                 fontWeight: FontWeight.bold,
                               ),

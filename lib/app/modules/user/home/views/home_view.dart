@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:sole_swap/app/controllers/theme_controller.dart';
+import 'package:sole_swap/app/modules/user/Profile/views/notifications_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/new_sneakers_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/product_details_view.dart';
 import 'package:sole_swap/app/modules/user/home/views/search_view.dart';
@@ -65,9 +66,13 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: themeController.isDarkMode.value ? Colors.black87 : AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.black87
+          : AppColors.background,
       appBar: AppBar(
-        backgroundColor: themeController.isDarkMode.value ? AppColors.transparent : AppColors.mainColor,
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
         title: Row(
           children: [
@@ -82,11 +87,16 @@ class _HomeViewState extends State<HomeView> {
               children: [
                 Text(
                   'Hello 👋🏻',
-                  style: themeController.isDarkMode.value ? h6.copyWith(color: AppColors.white) : h6,
+                  style: themeController.isDarkMode.value
+                      ? h6.copyWith(color: AppColors.white)
+                      : h6,
                 ),
                 Text(
                   'Saiid Romea',
-                  style: themeController.isDarkMode.value ? h5.copyWith(color: AppColors.white,fontWeight: FontWeight.w500) : h5.copyWith(fontWeight: FontWeight.w500),
+                  style: themeController.isDarkMode.value
+                      ? h5.copyWith(
+                          color: AppColors.white, fontWeight: FontWeight.w500)
+                      : h5.copyWith(fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -94,7 +104,9 @@ class _HomeViewState extends State<HomeView> {
         ),
         actions: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.to(()=> NotificationsView());
+            },
             child: Container(
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
@@ -104,7 +116,9 @@ class _HomeViewState extends State<HomeView> {
               child: Image.asset(
                 AppImages.notification,
                 scale: 4,
-                color: themeController.isDarkMode.value ? Colors.white : AppColors.black,
+                color: themeController.isDarkMode.value
+                    ? Colors.white
+                    : AppColors.black,
               ),
             ),
           ),
@@ -122,7 +136,9 @@ class _HomeViewState extends State<HomeView> {
               child: Image.asset(
                 AppImages.shop,
                 scale: 4,
-                color: themeController.isDarkMode.value ? Colors.white : AppColors.black,
+                color: themeController.isDarkMode.value
+                    ? Colors.white
+                    : AppColors.black,
               ),
             ),
           ),
@@ -146,7 +162,9 @@ class _HomeViewState extends State<HomeView> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                    color: themeController.isDarkMode.value ? Colors.black : AppColors.white,
+                  color: themeController.isDarkMode.value
+                      ? Colors.black
+                      : AppColors.white,
                   //border: Border.all(color: AppColors.silver),
                 ),
                 child: Row(
@@ -154,7 +172,9 @@ class _HomeViewState extends State<HomeView> {
                     Image.asset(
                       AppImages.search,
                       scale: 4,
-                     color:  themeController.isDarkMode.value ? Colors.white : AppColors.black,
+                      color: themeController.isDarkMode.value
+                          ? Colors.white
+                          : AppColors.black,
                     ),
                     sw12,
                     Text(
@@ -188,7 +208,9 @@ class _HomeViewState extends State<HomeView> {
                   effect: WormEffect(
                     dotHeight: 8,
                     dotWidth: 8,
-                    activeDotColor: themeController.isDarkMode.value ? Colors.white : Colors.black,
+                    activeDotColor: themeController.isDarkMode.value
+                        ? Colors.white
+                        : Colors.black,
                     dotColor: Colors.grey,
                   ),
                 ),
@@ -199,7 +221,9 @@ class _HomeViewState extends State<HomeView> {
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 'Recommended For you',
-                style: themeController.isDarkMode.value ? h3.copyWith(color: AppColors.white) : h3,
+                style: themeController.isDarkMode.value
+                    ? h3.copyWith(color: AppColors.white)
+                    : h3,
               ),
             ),
             sh8,

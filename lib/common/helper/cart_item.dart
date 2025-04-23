@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sole_swap/common/app_color/app_colors.dart';
 import 'package:sole_swap/common/app_images/app_images.dart';
 import 'package:sole_swap/common/app_text_style/styles.dart';
 
+import '../../app/controllers/theme_controller.dart';
 import '../size_box/custom_sizebox.dart';
 
 class CartItem extends StatelessWidget {
@@ -29,10 +31,13 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Container(
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: themeController.isDarkMode.value
+            ? AppColors.black
+            : AppColors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -63,7 +68,11 @@ class CartItem extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: h3,
+                  style: h3.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -75,22 +84,49 @@ class CartItem extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: decrement,
-                      child: Image.asset(
-                        AppImages.minus,
-                        scale: 4,
-                        height: 32,
-                        width: 32,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: themeController.isDarkMode.value
+                                ? AppColors.transparent
+                                : AppColors.black,
+                          ),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Image.asset(
+                          AppImages.minus,
+                          scale: 4,
+                          height: 32,
+                          width: 32,
+                        ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Text('$quantity', style: h5),
+                      child: Text(
+                        '$quantity',
+                        style: h5.copyWith(
+                          color: themeController.isDarkMode.value
+                              ? AppColors.white
+                              : AppColors.black,
+                        ),
+                      ),
                     ),
                     GestureDetector(
                       onTap: increment,
-                      child: Image.asset(
-                        AppImages.plus,
-                        scale: 4,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: themeController.isDarkMode.value
+                                ? AppColors.white
+                                : AppColors.transparent,
+                          ),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Image.asset(
+                          AppImages.plus,
+                          scale: 4,
+                        ),
                       ),
                     ),
                   ],
@@ -99,7 +135,14 @@ class CartItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('\$$price', style: h3),
+                    Text(
+                      '\$$price',
+                      style: h3.copyWith(
+                        color: themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: GestureDetector(

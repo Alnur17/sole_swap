@@ -7,6 +7,7 @@ import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class PaymentView extends StatefulWidget {
   const PaymentView({super.key});
@@ -17,24 +18,35 @@ class PaymentView extends StatefulWidget {
 
 class _PaymentViewState extends State<PaymentView> {
 
+  final ThemeController themeController = Get.find();
+
+  @override
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      return Get.off(() => PaymentDetailsView());
+      return Get.offAll(() => PaymentDetailsView());
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
-        backgroundColor: AppColors.background,
         automaticallyImplyLeading: false,
         title: Text(
           'Payment',
-          style: appBarStyle,
+          style: appBarStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
       ),
@@ -42,14 +54,24 @@ class _PaymentViewState extends State<PaymentView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              AppImages.success,
-              scale: 4,
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: themeController.isDarkMode.value ? AppColors.white : AppColors.transparent,width: 2.5),
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: Image.asset(
+                AppImages.success,
+                scale: 4,
+              ),
             ),
-            sh8,
+            sh20,
             Text(
               'Payment Successful',
-              style: h3,
+              style: h3.copyWith(
+                color: themeController.isDarkMode.value
+                    ? AppColors.white
+                    : AppColors.black,
+              ),
             )
           ],
         ),

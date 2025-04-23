@@ -9,17 +9,23 @@ import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/helper/timeline_step.dart';
 import '../../../../../common/widgets/custom_circular_container.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class TrackOrderView extends GetView {
   const TrackOrderView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: themeController.isDarkMode.value
+          ? Colors.white12
+          : AppColors.background,
       appBar: AppBar(
+        backgroundColor: themeController.isDarkMode.value
+            ? AppColors.transparent
+            : AppColors.mainColor,
         scrolledUnderElevation: 0,
-        backgroundColor: AppColors.background,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: CustomCircularContainer(
@@ -32,7 +38,11 @@ class TrackOrderView extends GetView {
         ),
         title: Text(
           'Track Order',
-          style: appBarStyle,
+          style: titleStyle.copyWith(
+            color: themeController.isDarkMode.value
+                ? AppColors.white
+                : AppColors.black,
+          ),
         ),
         centerTitle: true,
       ),
@@ -50,7 +60,11 @@ class TrackOrderView extends GetView {
             sh20,
             Text(
               'Order Details',
-              style: h3,
+              style: h3.copyWith(
+                color: themeController.isDarkMode.value
+                    ? AppColors.white
+                    : AppColors.black,
+              ),
             ),
             sh8,
             Row(
@@ -58,11 +72,19 @@ class TrackOrderView extends GetView {
               children: [
                 Text(
                   'Expected Delivery Date',
-                  style: h6,
+                  style: h6.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
                 Text(
                   '5 April 2025',
-                  style: h6,
+                  style: h6.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
               ],
             ),
@@ -72,18 +94,31 @@ class TrackOrderView extends GetView {
               children: [
                 Text(
                   'Tracking ID',
-                  style: h6,
+                  style: h6.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
                 Text(
                   'Dk216S6S444341',
-                  style: h6,
+                  style: h6.copyWith(
+                    color: themeController.isDarkMode.value
+                        ? AppColors.white
+                        : AppColors.black,
+                  ),
                 ),
               ],
             ),
             sh20,
             Text(
               'Order Details',
-              style: h3.copyWith(fontSize: 14),
+              style: h3.copyWith(
+                fontSize: 14,
+                color: themeController.isDarkMode.value
+                    ? AppColors.white
+                    : AppColors.black,
+              ),
             ),
             sh12,
             Column(
