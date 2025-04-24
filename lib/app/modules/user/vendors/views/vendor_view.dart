@@ -21,7 +21,7 @@ class VendorView extends GetView<VendorController> {
     final ThemeController themeController = Get.find();
     return Scaffold(
       backgroundColor: themeController.isDarkMode.value
-          ? Colors.black87
+          ? Colors.black12
           : AppColors.background,
       appBar: AppBar(
         backgroundColor: themeController.isDarkMode.value

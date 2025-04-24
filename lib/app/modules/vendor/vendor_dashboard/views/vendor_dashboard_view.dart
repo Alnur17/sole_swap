@@ -9,6 +9,7 @@ import 'package:sole_swap/app/modules/vendor/vendor_orders/views/vendor_orders_v
 import 'package:sole_swap/app/modules/vendor/vendor_profile/views/vendor_profile_view.dart';
 
 import '../../../../../common/app_color/app_colors.dart';
+import '../../../../controllers/theme_controller.dart';
 import '../controllers/vendor_dashboard_controller.dart';
 
 class VendorDashboardView extends StatefulWidget {
@@ -21,6 +22,7 @@ class VendorDashboardView extends StatefulWidget {
 class _VendorDashboardViewState extends State<VendorDashboardView> {
   final VendorDashboardController controller =
       Get.put(VendorDashboardController());
+  final ThemeController themeController = Get.find();
 
   static const List<Widget> _pages = [
     VendorHomeView(),
@@ -32,10 +34,14 @@ class _VendorDashboardViewState extends State<VendorDashboardView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: Obx(() => _pages[controller.selectedIndex.value]),
-      bottomNavigationBar: const VendorBottomNavBar(),
+    return Obx(
+      () => Scaffold(
+        backgroundColor: themeController.isDarkMode.value
+            ? Colors.white12
+            : AppColors.background,
+        body: Obx(() => _pages[controller.selectedIndex.value]),
+        bottomNavigationBar: const VendorBottomNavBar(),
+      ),
     );
   }
 }

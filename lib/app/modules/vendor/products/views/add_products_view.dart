@@ -188,7 +188,7 @@ class AddProductsView extends GetView {
       ),
       bottomSheet: Container(
         padding: EdgeInsets.only(left: 20,right: 20,bottom: 20),
-        color: AppColors.white,
+        color: themeController.isDarkMode.value ? AppColors.black : AppColors.background,
         child: CustomButton(
           text: 'Save',
           onPressed: () {},

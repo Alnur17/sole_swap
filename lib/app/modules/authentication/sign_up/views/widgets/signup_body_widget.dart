@@ -7,6 +7,7 @@ import '../../../../../../common/app_text_style/styles.dart';
 import '../../../../../../common/helper/upload_widget.dart';
 import '../../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../../common/widgets/custom_textfield.dart';
+import '../../../../../controllers/theme_controller.dart';
 import '../../controllers/sign_up_controller.dart';
 
 class SignupBodyWidget extends StatefulWidget {
@@ -18,6 +19,7 @@ class SignupBodyWidget extends StatefulWidget {
 
 class _SignupBodyWidgetState extends State<SignupBodyWidget> {
   final SignUpController signupController = Get.put(SignUpController());
+  final ThemeController themeController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +87,12 @@ class _SignupBodyWidgetState extends State<SignupBodyWidget> {
             activeColor: AppColors.green,
           ),
         ),
-        Text(label, style: h4),
+        Text(label,
+            style: h4.copyWith(
+              color: themeController.isDarkMode.value
+                  ? AppColors.white
+                  : AppColors.black,
+            )),
       ],
     );
   }

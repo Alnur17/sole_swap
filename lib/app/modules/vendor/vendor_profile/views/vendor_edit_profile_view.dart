@@ -89,7 +89,10 @@ class VendorEditProfileView extends GetView {
           ),
         ),
       ),
-      bottomSheet: Padding(
+      bottomSheet: Container(
+        color: themeController.isDarkMode.value
+            ? AppColors.black
+            : AppColors.background,
         padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
         child: CustomButton(
           text: 'Update',

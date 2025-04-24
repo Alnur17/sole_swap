@@ -1,5 +1,6 @@
 class AppImages {
   //================ Icons ==================>
+  static const darkMode = "assets/icons/dark mode.png";
   static const splashLogo = "assets/icons/logo.png";
   static const authLogo = "assets/icons/logo light.png";
   static const authBack = "assets/images/authBack.png";
@@ -26,6 +27,7 @@ class AppImages {
   static const facebook = "assets/icons/facebook.png";
   static const google = "assets/icons/google.png";
   static const apple = "assets/icons/apple.png";
+  static const appleWhite = "assets/icons/apple white.png";
   static const addBookmark = "assets/icons/add bookmarks.png";
   static const close = "assets/icons/close.png";
   static const clock = "assets/icons/clock.png";

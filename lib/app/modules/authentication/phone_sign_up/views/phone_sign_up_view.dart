@@ -10,6 +10,7 @@ import 'package:sole_swap/common/widgets/custom_button.dart';
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
+import '../../../../controllers/theme_controller.dart';
 import '../controllers/phone_sign_up_controller.dart';
 
 class PhoneSignUpView extends GetView<PhoneSignUpController> {
@@ -17,6 +18,7 @@ class PhoneSignUpView extends GetView<PhoneSignUpController> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
       backgroundColor: AppColors.transparent,
       appBar: AppBar(
@@ -33,6 +35,8 @@ class PhoneSignUpView extends GetView<PhoneSignUpController> {
               Image.asset(
                 AppImages.enterPhoneNumber,
                 scale: 4,
+                fit: BoxFit.cover,
+                width: double.infinity,
               ),
               Positioned.fill(
                 child: Container(
@@ -86,7 +90,9 @@ class PhoneSignUpView extends GetView<PhoneSignUpController> {
               height: Get.height,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: themeController.isDarkMode.value
+                    ? Colors.white12
+                    : AppColors.white,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20),
                   topLeft: Radius.circular(20),

@@ -30,7 +30,7 @@ class _VendorProfileViewState extends State<VendorProfileView> {
     return Obx(
       () => Scaffold(
         backgroundColor: themeController.isDarkMode.value
-            ? Colors.black87
+            ? Colors.black12
             : AppColors.background,
         appBar: AppBar(
           backgroundColor: themeController.isDarkMode.value
@@ -98,8 +98,9 @@ class _VendorProfileViewState extends State<VendorProfileView> {
                 ),
                 sh24,
                 ListTile(
-                  leading: Icon(
-                    Icons.format_paint_outlined,
+                  leading: Image.asset(
+                    AppImages.darkMode,
+                    scale: 4,
                     color: themeController.isDarkMode.value
                         ? AppColors.white
                         : AppColors.black,
@@ -118,8 +119,10 @@ class _VendorProfileViewState extends State<VendorProfileView> {
                       onChanged: (value) {
                         themeController.toggleTheme();
                       },
-                      activeColor: AppColors.white,
-                      activeTrackColor: AppColors.blue,
+                      activeColor: AppColors.black,
+                      activeTrackColor: AppColors.white,
+                      inactiveTrackColor: AppColors.black,
+                      inactiveThumbColor: AppColors.white,
                     ),
                   ),
                 ),

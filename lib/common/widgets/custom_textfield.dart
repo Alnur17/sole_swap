@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sole_swap/common/size_box/custom_sizebox.dart';
+import '../../app/controllers/theme_controller.dart';
 import '../app_color/app_colors.dart';
 import '../app_text_style/styles.dart';
 
@@ -35,13 +37,17 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (labelText != null) ...[
           Text(
             labelText!,
-            style: h5.copyWith(color: AppColors.black), // Use your style
+            style: h5.copyWith(
+                color: themeController.isDarkMode.value
+                    ? AppColors.white
+                    : AppColors.black),
           ),
           sh8, // Space between label and text field
         ],
@@ -55,6 +61,11 @@ class CustomTextField extends StatelessWidget {
           ),
           child: TextField(
             textInputAction: TextInputAction.done,
+            style: TextStyle(
+              color: themeController.isDarkMode.value
+                  ? AppColors.white
+                  : AppColors.black,
+            ),
             onChanged: onChange,
             controller: controller,
             maxLines: null,
@@ -62,7 +73,8 @@ class CustomTextField extends StatelessWidget {
             decoration: InputDecoration(
               hintText: hintText ?? '',
               hintStyle: hintTextStyle ?? h5.copyWith(color: AppColors.grey),
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               prefixIcon: preIcon,
               suffixIcon: sufIcon,
               border: InputBorder.none,

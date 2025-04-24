@@ -9,12 +9,14 @@ import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_button.dart';
+import '../../../../controllers/theme_controller.dart';
 import '../controllers/sign_up_controller.dart';
 
 class SignUpView extends GetView<SignUpController> {
   const SignUpView({super.key});
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
       backgroundColor: AppColors.transparent,
       appBar: AppBar(
@@ -31,6 +33,8 @@ class SignUpView extends GetView<SignUpController> {
               Image.asset(
                 AppImages.signUpImage,
                 scale: 4,
+                fit: BoxFit.cover,
+                width: double.infinity,
               ),
               Positioned.fill(
                 child: Container(
@@ -84,7 +88,9 @@ class SignUpView extends GetView<SignUpController> {
               height: Get.height,
               padding: EdgeInsets.only(top: 20, left: 20,right: 20,bottom: 12),
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: themeController.isDarkMode.value
+                    ? Colors.white12
+                    : AppColors.white,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20),
                   topLeft: Radius.circular(20),

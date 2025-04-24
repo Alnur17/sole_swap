@@ -10,7 +10,7 @@ import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_button.dart';
 import '../../../../../common/widgets/custom_circle_button.dart';
-import '../../../../../common/widgets/google_button.dart';
+import '../../../../controllers/theme_controller.dart';
 import '../../forgot_password/views/forgot_password_view.dart';
 import '../../sign_up/views/sign_up_view.dart';
 import '../controllers/sign_in_controller.dart';
@@ -20,6 +20,7 @@ class SignInView extends GetView<SignInController> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
       backgroundColor: AppColors.transparent,
       appBar: AppBar(
@@ -36,6 +37,8 @@ class SignInView extends GetView<SignInController> {
               Image.asset(
                 AppImages.signInImage,
                 scale: 4,
+                fit: BoxFit.cover,
+                width: double.infinity,
               ),
               Positioned.fill(
                 child: Container(
@@ -92,7 +95,9 @@ class SignInView extends GetView<SignInController> {
               height: Get.height,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: themeController.isDarkMode.value
+                    ? Colors.white12
+                    : AppColors.white,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20),
                   topLeft: Radius.circular(20),
@@ -127,12 +132,19 @@ class SignInView extends GetView<SignInController> {
                               child: Image.asset(
                                 AppImages.checkbox,
                                 scale: 4,
+                                color: themeController.isDarkMode.value
+                                    ? Colors.white
+                                    : AppColors.black,
                               ),
                             ),
                             sw16,
                             Text(
                               'Remember Me',
-                              style: h4,
+                              style: h4.copyWith(
+                                color: themeController.isDarkMode.value
+                                    ? Colors.white
+                                    : AppColors.black,
+                              ),
                             ),
                           ],
                         ),
@@ -145,6 +157,12 @@ class SignInView extends GetView<SignInController> {
                             style: h4.copyWith(
                               decoration: TextDecoration.underline,
                               decorationThickness: 2,
+                              decorationColor: themeController.isDarkMode.value
+                                  ? Colors.white
+                                  : AppColors.black,
+                              color: themeController.isDarkMode.value
+                                  ? Colors.white
+                                  : AppColors.black,
                             ),
                           ),
                         ),
@@ -165,7 +183,11 @@ class SignInView extends GetView<SignInController> {
                         sw10,
                         Text(
                           'Or sign in with',
-                          style: h4,
+                          style: h4.copyWith(
+                            color: themeController.isDarkMode.value
+                                ? Colors.white
+                                : AppColors.black,
+                          ),
                         ),
                         sw10,
                         const Expanded(child: Divider()),
@@ -186,7 +208,7 @@ class SignInView extends GetView<SignInController> {
                         ),
                         sw16,
                         CustomCircleButton(
-                          assetPath: AppImages.apple,
+                          assetPath: themeController.isDarkMode.value ? AppImages.appleWhite : AppImages.apple,
                           onTap: () {},
                         ),
                       ],
@@ -201,13 +223,23 @@ class SignInView extends GetView<SignInController> {
                         children: [
                           Text(
                             'Don’t have an account? ',
-                            style: h3,
+                            style: h3.copyWith(
+                              color: themeController.isDarkMode.value
+                                  ? Colors.white
+                                  : AppColors.black,
+                            ),
                           ),
                           Text(
                             'SignUp',
                             style: h3.copyWith(
                               decoration: TextDecoration.underline,
                               decorationThickness: 2,
+                              decorationColor: themeController.isDarkMode.value
+                                  ? Colors.white
+                                  : AppColors.black,
+                              color: themeController.isDarkMode.value
+                                  ? Colors.white
+                                  : AppColors.black,
                             ),
                           ),
                         ],

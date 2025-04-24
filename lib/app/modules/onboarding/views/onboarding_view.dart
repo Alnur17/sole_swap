@@ -34,25 +34,22 @@ class _OnboardingViewState extends State<OnboardingView> {
               OnboardingPage(
                 image: AppImages.onboardingOne,
                 title: "Welcome to Sole Swap The Future of Rentals",
-                subtitle:
-                "Rent and lend high-end sneakers in just a few taps.",
-                highlightedText: ["Sole" , "Swap"],
+                subtitle: "Rent and lend high-end sneakers in just a few taps.",
+                highlightedText: ["Sole", "Swap"],
                 //backgroundImage: AppImages.onboardingBackOne,
               ),
               OnboardingPage(
                 image: AppImages.onboardingTwo,
                 title: "Step into the Future of Sneaker Culture.",
-                subtitle:
-                    "Find, rent, or list sneakers in a few taps",
+                subtitle: "Find, rent, or list sneakers in a few taps",
                 highlightedText: [],
                 //backgroundImage: AppImages.onboardingBackTwo,
               ),
               OnboardingPage(
                 image: AppImages.onboardingThree,
-                title:  "Rent, Lend, and Earn with Sole Swap.",
-                subtitle:
-                    "Fast verification and secure deliveries, always.",
-                highlightedText: ["Sole" , "Swap."],
+                title: "Rent, Lend, and Earn with Sole Swap.",
+                subtitle: "Fast verification and secure deliveries, always.",
+                highlightedText: ["Sole", "Swap."],
                 //backgroundImage: AppImages.onboardingBackTwo,
               ),
             ],
@@ -72,7 +69,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                     dotColor: Colors.grey,
                     activeDotColor: themeController.isDarkMode.value
                         ? Colors.white
-                        :Colors.black,
+                        : Colors.black,
                   ),
                 ),
               ],
@@ -100,12 +97,16 @@ class _OnboardingViewState extends State<OnboardingView> {
                 height: 54,
                 decoration: ShapeDecoration(
                   shape: CircleBorder(),
-                  color: AppColors.black,
+                  color: themeController.isDarkMode.value
+                      ? AppColors.white
+                      : AppColors.black,
                 ),
                 child: Image.asset(
                   AppImages.arrowRight,
                   scale: 4,
-                  color: AppColors.white,
+                  color: themeController.isDarkMode.value
+                      ? AppColors.black
+                      : AppColors.white,
                 ),
               ),
             ),

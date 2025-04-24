@@ -11,12 +11,14 @@ import '../../../../../common/app_images/app_images.dart';
 import '../../../../../common/app_text_style/styles.dart';
 import '../../../../../common/size_box/custom_sizebox.dart';
 import '../../../../../common/widgets/custom_button.dart';
+import '../../../../controllers/theme_controller.dart';
 
 class VerifyCodeForgotView extends GetView {
   const VerifyCodeForgotView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
       backgroundColor: AppColors.transparent,
       appBar: AppBar(
@@ -33,6 +35,8 @@ class VerifyCodeForgotView extends GetView {
               Image.asset(
                 AppImages.verifyEmailImage,
                 scale: 4,
+                fit: BoxFit.cover,
+                width: double.infinity,
               ),
               Positioned.fill(
                 child: Container(
@@ -86,7 +90,9 @@ class VerifyCodeForgotView extends GetView {
               height: Get.height,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: themeController.isDarkMode.value
+                    ? Colors.white12
+                    : AppColors.white,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20),
                   topLeft: Radius.circular(20),
@@ -128,7 +134,11 @@ class VerifyCodeForgotView extends GetView {
                   sh16,
                   Text(
                     'Didn\'t receive OTP?',
-                    style: h4,
+                    style: h4.copyWith(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                   ),
                   sh5,
                   Text(
@@ -136,6 +146,12 @@ class VerifyCodeForgotView extends GetView {
                     style: h3.copyWith(
                       decoration: TextDecoration.underline,
                       decorationThickness: 2,
+                      decorationColor: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
                     ),
                   ),
                   sh16,
