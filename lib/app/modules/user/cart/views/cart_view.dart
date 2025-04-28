@@ -112,18 +112,19 @@ class CartView extends GetView<CartController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Subtotal', style: TextStyle(color: Colors.grey)),
-                    Text('\$30.00',
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text('Subtotal', style: h5.copyWith(color: AppColors.grey)),
+                    Text('\$30.00', style: h5.copyWith(color: AppColors.grey)),
                   ],
                 ),
                 sh8,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Shipping', style: TextStyle(color: Colors.grey)),
-                    Text('\$05.00',
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(
+                      'Shipping',
+                      style: h5.copyWith(color: AppColors.grey),
+                    ),
+                    Text('\$05.00', style: h5.copyWith(color: AppColors.grey)),
                   ],
                 ),
                 sh8,
@@ -132,12 +133,22 @@ class CartView extends GetView<CartController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Total Cost',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16)),
-                    Text('\$35.00',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16)),
+                    Text(
+                      'Total Cost',
+                      style: h3.copyWith(
+                        color: themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
+                    ),
+                    Text(
+                      '\$35.00',
+                      style: h3.copyWith(
+                        color: themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
+                    ),
                   ],
                 ),
                 sh16,
