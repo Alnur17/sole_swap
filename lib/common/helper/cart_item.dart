@@ -96,8 +96,6 @@ class CartItem extends StatelessWidget {
                         child: Image.asset(
                           AppImages.minus,
                           scale: 4,
-                          height: 32,
-                          width: 32,
                         ),
                       ),
                     ),

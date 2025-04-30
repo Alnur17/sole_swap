@@ -98,70 +98,72 @@ class VerifyCodeForgotView extends GetView {
                   topLeft: Radius.circular(20),
                 ),
               ),
-              child: Column(
-                children: [
-                  PinCodeTextField(
-                    length: 4,
-                    obscureText: false,
-                    keyboardType: TextInputType.number,
-                    animationType: AnimationType.fade,
-                    pinTheme: PinTheme(
-                      shape: PinCodeFieldShape.box,
-                      borderRadius: BorderRadius.circular(8),
-                      fieldHeight: Get.height * 0.07,
-                      fieldWidth: Get.width * 0.14,
-                      activeColor: AppColors.white,
-                      activeFillColor: AppColors.whiteDark,
-                      inactiveColor: AppColors.grey,
-                      inactiveFillColor: AppColors.white,
-                      selectedColor: AppColors.mainColor,
-                      selectedFillColor: AppColors.greyLight,
-                      fieldOuterPadding: EdgeInsets.symmetric(horizontal: 2),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    PinCodeTextField(
+                      length: 4,
+                      obscureText: false,
+                      keyboardType: TextInputType.number,
+                      animationType: AnimationType.fade,
+                      pinTheme: PinTheme(
+                        shape: PinCodeFieldShape.box,
+                        borderRadius: BorderRadius.circular(8),
+                        fieldHeight: Get.height * 0.07,
+                        fieldWidth: Get.width * 0.14,
+                        activeColor: AppColors.white,
+                        activeFillColor: AppColors.whiteDark,
+                        inactiveColor: AppColors.grey,
+                        inactiveFillColor: AppColors.white,
+                        selectedColor: AppColors.mainColor,
+                        selectedFillColor: AppColors.greyLight,
+                        fieldOuterPadding: EdgeInsets.symmetric(horizontal: 2),
+                      ),
+                      animationDuration: const Duration(milliseconds: 300),
+                      backgroundColor: AppColors.transparent,
+                      cursorColor: AppColors.blue,
+                      enablePinAutofill: true,
+                      enableActiveFill: true,
+                      onCompleted: (v) {},
+                      onChanged: (value) {},
+                      beforeTextPaste: (text) {
+                        log("Allowing to paste $text");
+                        return true;
+                      },
+                      appContext: context,
                     ),
-                    animationDuration: const Duration(milliseconds: 300),
-                    backgroundColor: AppColors.transparent,
-                    cursorColor: AppColors.blue,
-                    enablePinAutofill: true,
-                    enableActiveFill: true,
-                    onCompleted: (v) {},
-                    onChanged: (value) {},
-                    beforeTextPaste: (text) {
-                      log("Allowing to paste $text");
-                      return true;
-                    },
-                    appContext: context,
-                  ),
-                  sh16,
-                  Text(
-                    'Didn\'t receive OTP?',
-                    style: h4.copyWith(
-                      color: themeController.isDarkMode.value
-                          ? AppColors.white
-                          : AppColors.black,
+                    sh16,
+                    Text(
+                      'Didn\'t receive OTP?',
+                      style: h4.copyWith(
+                        color: themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
                     ),
-                  ),
-                  sh5,
-                  Text(
-                    'Resend Code',
-                    style: h3.copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationThickness: 2,
-                      decorationColor: themeController.isDarkMode.value
-                          ? AppColors.white
-                          : AppColors.black,
-                      color: themeController.isDarkMode.value
-                          ? AppColors.white
-                          : AppColors.black,
+                    sh5,
+                    Text(
+                      'Resend Code',
+                      style: h3.copyWith(
+                        decoration: TextDecoration.underline,
+                        decorationThickness: 2,
+                        decorationColor: themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                        color: themeController.isDarkMode.value
+                            ? AppColors.white
+                            : AppColors.black,
+                      ),
                     ),
-                  ),
-                  sh16,
-                  CustomButton(
-                    text: 'Continue',
-                    onPressed: () {
-                      Get.to(() => NewPasswordView());
-                    },
-                  ),
-                ],
+                    sh16,
+                    CustomButton(
+                      text: 'Continue',
+                      onPressed: () {
+                        Get.to(() => NewPasswordView());
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

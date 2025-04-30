@@ -97,20 +97,22 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                   topLeft: Radius.circular(20),
                 ),
               ),
-              child: Column(
-                children: [
-                  CustomTextField(
-                    labelText: 'Email',
-                    hintText: 'Enter your email',
-                  ),
-                  sh12,
-                  CustomButton(
-                    text: 'Continue',
-                    onPressed: () {
-                      Get.to(() => VerifyCodeForgotView());
-                    },
-                  ),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    CustomTextField(
+                      labelText: 'Email',
+                      hintText: 'Enter your email',
+                    ),
+                    sh12,
+                    CustomButton(
+                      text: 'Continue',
+                      onPressed: () {
+                        Get.to(() => VerifyCodeForgotView());
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

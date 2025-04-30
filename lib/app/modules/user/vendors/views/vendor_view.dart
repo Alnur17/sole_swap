@@ -37,16 +37,17 @@ class VendorView extends GetView<VendorController> {
               : titleStyle,
         ),
         centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16),
-          child: CustomCircularContainer(
-            imagePath: AppImages.arrowBack,
-            onTap: () {
-              Get.back();
-            },
-            padding: 4,
-          ),
-        ),
+        automaticallyImplyLeading: false,
+        // leading: Padding(
+        //   padding: const EdgeInsets.only(left: 16),
+        //   child: CustomCircularContainer(
+        //     imagePath: AppImages.arrowBack,
+        //     onTap: () {
+        //       Get.back();
+        //     },
+        //     padding: 4,
+        //   ),
+        // ),
         actions: [
           CustomCircularContainer(
             imagePath: AppImages.shop,

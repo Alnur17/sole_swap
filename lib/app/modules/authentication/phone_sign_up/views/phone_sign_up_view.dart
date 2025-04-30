@@ -101,6 +101,11 @@ class PhoneSignUpView extends GetView<PhoneSignUpController> {
               child: Column(
                 children: [
                   IntlPhoneField(
+                    style: TextStyle(
+                      color: themeController.isDarkMode.value
+                          ? AppColors.white
+                          : AppColors.black,
+                    ),
                     decoration: InputDecoration(
                       hintText: 'Enter your phone number',
                       hintStyle: h4.copyWith(

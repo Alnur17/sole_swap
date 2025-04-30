@@ -34,16 +34,7 @@ class FavoritesView extends GetView<FavoritesController> {
                   : AppColors.black,
             )),
         centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16),
-          child: CustomCircularContainer(
-            imagePath: AppImages.arrowBack,
-            onTap: () {
-              Get.back();
-            },
-            padding: 4,
-          ),
-        ),
+        automaticallyImplyLeading: false,
         actions: [
           CustomCircularContainer(
             imagePath: AppImages.shop,

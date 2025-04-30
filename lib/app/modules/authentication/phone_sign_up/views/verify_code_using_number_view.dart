@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:sole_swap/app/modules/user/dashboard/views/dashboard_view.dart';
 
 import '../../../../../common/app_color/app_colors.dart';
 import '../../../../../common/app_images/app_images.dart';
@@ -158,6 +159,7 @@ class VerifyCodeUsingNumberView extends GetView {
                     CustomButton(
                       text: 'Continue',
                       onPressed: () {
+                        Get.to(()=> DashboardView());
                         debugPrint('Ok');
                       },
                     ),
