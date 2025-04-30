@@ -117,8 +117,8 @@ class _HomeViewState extends State<HomeView> {
                 AppImages.notification,
                 scale: 4,
                 color: themeController.isDarkMode.value
-                    ? Colors.white
-                    : AppColors.black,
+                    ? AppColors.white
+                    : null,
               ),
             ),
           ),
